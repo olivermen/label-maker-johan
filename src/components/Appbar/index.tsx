@@ -31,7 +31,7 @@ import { useNavigate } from "react-router-dom";
 
 import logo from "../../assets/images/logo1.webp";
 
-import "./sidebar.scss";
+import "./appbar.scss";
 
 const drawerWidth = 240;
 
