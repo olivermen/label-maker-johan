@@ -4,7 +4,7 @@ import React from "react";
 import "./checkout.scss";
 
 // import sub components
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../../components/Appbar";
 import Checkbox from "./Checkbox";
 
 const Checkout = () => {

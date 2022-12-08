@@ -4,7 +4,7 @@ import React from "react";
 import "./home.scss";
 
 // import sub components
-import Sidebar from "../../components/Sidebar";
+import Appbar from "../../components/Appbar";
 import Editor from "./Editor";
 
 // import signin modal
@@ -18,9 +18,9 @@ const Home = ({ status }: HomeProps) => {
   return (
     <>
       <div className="back">
-        <Sidebar />
+        <Appbar />
         <Editor />
-        {status === "Sign In" ? <Login /> : ""}
+        {/* {status === "Sign In" ? <Login /> : ""} */}
       </div>
     </>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import "./app.scss";
 
 // import pages
-import Routers from "./Routers";
+import Routers from "./routers";
 
 function App() {
   return <Routers />;

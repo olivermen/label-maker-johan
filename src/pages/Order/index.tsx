@@ -4,7 +4,7 @@ import React from "react";
 import "./order.scss";
 
 // import sub components
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../../components/Appbar";
 import OrderBox from "./OrderBox";
 
 const Order = () => {
