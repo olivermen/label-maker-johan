@@ -1,9 +1,11 @@
-.back {
-    background-image: url("../../assets/main/order-bg.webp");
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-sizing:border-box;
-    overflow-x: hidden;
+@import "../../index.scss";
+.home {
+  background-image: url("../../assets/main/order-bg.jpg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: "Poppins";
 }
