@@ -12,6 +12,12 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControl from "@mui/material/FormControl";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import { LoadingOutlined } from "@ant-design/icons";
+
+import SendIcon from "@mui/icons-material/Send";
+import PaidIcon from "@mui/icons-material/Paid";
+import ReviewsIcon from "@mui/icons-material/Reviews";
 
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
@@ -20,6 +26,7 @@ import { jsPDF } from "jspdf";
 import "./orderbox.scss";
 
 // import labels
+import Steps from "../../../components/Steps";
 import Label from "../../../components/Label";
 
 // import images
@@ -37,6 +44,7 @@ const OrderBox: React.FC = () => {
   const printRef = React.useRef<HTMLDivElement>(null);
 
   const [file, setFile] = useState(Img);
+  const [check, setCheck] = useState("small");
   const [selectedValue, setSelectedValue] = React.useState("a");
   const [items, setItems] = useState([
     "12 labels ($14)",
@@ -142,13 +150,22 @@ const OrderBox: React.FC = () => {
           }}
         >
           <div
-            className="col-xl-4 col-lg-12 ccol-md-12 col-sm-12 col-xs-12"
+            className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12"
             style={{
               display: "flex",
               flexDirection: "column",
               textAlign: "left",
             }}
           >
+            <div
+              style={{
+                background: "#89898940",
+                padding: "5px 10px",
+                borderRadius: "5px",
+              }}
+            >
+              <Steps />
+            </div>
             <h1 className="gradient-h1">Order your bottle stickers</h1>
             <h3>
               Your custom label design will be printed out as high quality
@@ -236,102 +253,84 @@ const OrderBox: React.FC = () => {
 
             <Row style={{ marginTop: "20px" }}>
               <Col className="col-12">
-                <h4>Tag line</h4>
-                <input
-                  type="text"
-                  onChange={updateTagLine}
-                  value="Homemade in Aotearoa"
-                />
+                <h4 style={{ color: "#646464", fontWeight: "100" }}>
+                  Free worldwide shipping included.
+                </h4>
               </Col>
             </Row>
 
             <Row style={{ marginTop: "20px" }}>
-              <Col className="col-3">
-                <h4>Alc/Vol</h4>
-                <input type="text" value={vol} onChange={updateVol} />
+              <Col className="col-12">
+                <h4>Size</h4>
+                <ul className="donate-now">
+                  <li>
+                    <input
+                      type="radio"
+                      id="a25"
+                      name="amount"
+                      checked
+                      onChange={() => setCheck("small")}
+                    />
+                    <label htmlFor="a25" className="small">
+                      Small (97.6 * 90mm)
+                    </label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      id="a50"
+                      name="amount"
+                      onChange={() => setCheck("big")}
+                    />
+                    <label htmlFor="a50" className="big">
+                      Big (104 * 100mm)
+                    </label>
+                  </li>
+                </ul>
               </Col>
-              <Col className="col-3">
-                <h4>Volume</h4>
-                <input type="text" value={cl} onChange={updateCl} />
-              </Col>
-              <Col className="col-6">
-                <h4>Batch date</h4>
-                <DatePicker bordered={false} />
-              </Col>
-            </Row>
-
-            <Row style={{ marginTop: "20px" }}>
-              <h4 style={{ marginBottom: "15px" }}>Color</h4>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <CirclePicker
-                  width="100%"
-                  circleSize={14}
-                  colors={[
-                    "#f44336",
-                    "#e91e63",
-                    "#673ab7",
-                    "#3f51b5",
-                    "#03a9f4",
-                    "#00bcd4",
-                    "#009688",
-                    "#8bc34a",
-                    "#cddc39",
-                    "#ffeb3b",
-                    "#ffc107",
-                    "#ff9800",
-                    "#ff5722",
-                  ]}
-                  onChange={onColorChange}
-                />
-                <button
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    padding: "0 5px",
-                  }}
-                >
-                  <SettingsOutlinedIcon
-                    sx={{ fontSize: "18px", color: "#354832" }}
-                  />
-                </button>
-              </div>
             </Row>
             <Row
               style={{
-                marginTop: "20px",
+                marginTop: "50px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
-              <Col className="col-6">
+              <Col className="col-4">
                 <button
                   style={{
                     width: "100%",
                     fontSize: "14px",
                     fontWeight: "900",
-                    padding: "15px 25px",
+                    padding: "10px 25px",
                     color: "white",
                     backgroundColor: "#FEA150",
                     border: "none",
                     borderRadius: "50px",
                   }}
                 >
-                  Buy Stickers
+                  Next
                 </button>
               </Col>
-
-              <Col className="col-6"></Col>
+              <Col className="col-4">
+                or{" "}
+                <button
+                  style={{
+                    background: "none",
+                    border: "none",
+                    textDecoration: "underline",
+                  }}
+                >
+                  {" "}
+                  Back{" "}
+                </button>
+              </Col>
+              <Col className="col-4"></Col>
             </Row>
           </div>
           {/* <div
-            className="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+            className="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-xs-12"
             style={{
               display: "flex",
               justifyContent: "center",

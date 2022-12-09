@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Checkout from "../pages/Checkout";
 import Order from "../pages/Order";
+import Shipping from "../pages/Shipping";
 
 const Routers = () => {
   return (
@@ -13,6 +14,7 @@ const Routers = () => {
       <Route path="/login" element={<Home status="Sign In" />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/order" element={<Order />} />
+      <Route path="/shipping" element={<Shipping />} />
     </Routes>
   );
 };

@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { PlusOutlined } from "@ant-design/icons";
+import { Divider, Input, Select, DatePicker, Space } from "antd";
+import type { InputRef } from "antd";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -9,22 +12,31 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControl from "@mui/material/FormControl";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import { DatePicker, Space } from "antd";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import { LoadingOutlined } from "@ant-design/icons";
+
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SendIcon from "@mui/icons-material/Send";
+import PaidIcon from "@mui/icons-material/Paid";
+import ReviewsIcon from "@mui/icons-material/Reviews";
 
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
 // import stylesheets
-import "./editor.scss";
+import "./shippingbox.scss";
 
 // import labels
 import Label from "../../../components/Label";
+import Shipping from "../../../components/Steps/Shipping";
 
 // import images
 import Img from "../../../assets/images/bg2.jpg";
 import { Slider } from "@mui/material";
 
-const Home = () => {
+let index = 0;
+
+const ShippingBox: React.FC = () => {
   const [color, setColor] = useState("#000000");
   const [wineName, setWineName] = useState("WineName");
   const [vol, setVol] = useState("4.8");
@@ -33,7 +45,32 @@ const Home = () => {
   const printRef = React.useRef<HTMLDivElement>(null);
 
   const [file, setFile] = useState(Img);
+  const [check, setCheck] = useState("small");
   const [selectedValue, setSelectedValue] = React.useState("a");
+  const [items, setItems] = useState([
+    "12 labels ($14)",
+    "12 labels ($14)",
+    "36 labels ($22)",
+    "48 labels ($28)",
+    "72 labels ($38)",
+    "120 labels ($56)",
+    "200 labels ($86)",
+    "500 labels ($170)",
+  ]);
+  const [name, setName] = useState("");
+  const inputRef = useRef<InputRef>(null);
+  const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  };
+
+  const addItem = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setItems([...items, name || `New item ${index++}`]);
+    setName("");
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 0);
+  };
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
@@ -104,7 +141,7 @@ const Home = () => {
   };
 
   return (
-    <div className="editor">
+    <div className="orderbox">
       <div className="container">
         <div
           style={{
@@ -114,18 +151,27 @@ const Home = () => {
           }}
         >
           <div
-            className="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+            className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12"
             style={{
               display: "flex",
               flexDirection: "column",
               textAlign: "left",
             }}
           >
-            <h1 className="gradient-h1">Create your own wine labels</h1>
+            <div
+              style={{
+                background: "#89898940",
+                padding: "5px 10px",
+                borderRadius: "5px",
+              }}
+            >
+              <Shipping />
+            </div>
+            <h1 className="gradient-h1">Order your bottle stickers</h1>
             <h3>
-              Add the details about your beer and a custom label will be created
-              for you. Use the arrows beside the bottle to try out different
-              designs or browse all our designs.
+              Your custom label design will be printed out as high quality
+              waterproof stickers, cut to shape and shipped to you promptly, so
+              you can make your jam look fantastic.
             </h3>
             <Row style={{ marginTop: "20px" }}>
               <h4>Side</h4>
@@ -176,123 +222,116 @@ const Home = () => {
               </FormControl>
             </Row>
             <Row style={{ marginTop: "20px" }}>
-              <Col className="col-6">
-                <h4>Bottle name</h4>
-                <input
-                  type="text"
-                  onChange={updateWineName}
-                  value="Sarah's Special"
-                />
-              </Col>
-              <Col className="col-6">
-                <h4>Bottle type</h4>
-                <input
-                  type="text"
-                  name="site_name"
-                  value="Mixed Berry Jam"
-                  onChange={updateWineName}
+              <Col className="col-12">
+                <h4>Number of labels</h4>
+                <Select
+                  style={{ width: "100%" }}
+                  placeholder="Order Label Count"
+                  dropdownRender={(menu) => (
+                    <>
+                      {menu}
+                      <Divider style={{ margin: "8px 0" }} />
+                      <Space style={{ padding: "0 8px 4px" }}>
+                        <Input
+                          placeholder="Please enter item"
+                          ref={inputRef}
+                          value={name}
+                          onChange={onNameChange}
+                        />
+                        <button
+                          onClick={() => addItem}
+                          style={{ border: "none", background: "transparent" }}
+                        >
+                          + Add item
+                        </button>
+                      </Space>
+                    </>
+                  )}
+                  options={items.map((item) => ({ label: item, value: item }))}
                 />
               </Col>
             </Row>
 
             <Row style={{ marginTop: "20px" }}>
               <Col className="col-12">
-                <h4>Tag line</h4>
-                <input
-                  type="text"
-                  onChange={updateTagLine}
-                  value="Homemade in Aotearoa"
-                />
+                <h4 style={{ color: "#646464", fontWeight: "100" }}>
+                  Free worldwide shipping included.
+                </h4>
               </Col>
             </Row>
 
             <Row style={{ marginTop: "20px" }}>
-              <Col className="col-3">
-                <h4>Alc/Vol</h4>
-                <input type="text" value={vol} onChange={updateVol} />
+              <Col className="col-12">
+                <h4>Size</h4>
+                <ul className="donate-now">
+                  <li>
+                    <input
+                      type="radio"
+                      id="a25"
+                      name="amount"
+                      checked
+                      onChange={() => setCheck("small")}
+                    />
+                    <label htmlFor="a25" className="small">
+                      Small (97.6 * 90mm)
+                    </label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      id="a50"
+                      name="amount"
+                      onChange={() => setCheck("big")}
+                    />
+                    <label htmlFor="a50" className="big">
+                      Big (104 * 100mm)
+                    </label>
+                  </li>
+                </ul>
               </Col>
-              <Col className="col-3">
-                <h4>Volume</h4>
-                <input type="text" value={cl} onChange={updateCl} />
-              </Col>
-              <Col className="col-6">
-                <h4>Batch date</h4>
-                <DatePicker bordered={false} />
-              </Col>
-            </Row>
-
-            <Row style={{ marginTop: "20px" }}>
-              <h4 style={{ marginBottom: "15px" }}>Color</h4>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <CirclePicker
-                  width="100%"
-                  circleSize={14}
-                  colors={[
-                    "#f44336",
-                    "#e91e63",
-                    "#673ab7",
-                    "#3f51b5",
-                    "#03a9f4",
-                    "#00bcd4",
-                    "#009688",
-                    "#8bc34a",
-                    "#cddc39",
-                    "#ffeb3b",
-                    "#ffc107",
-                    "#ff9800",
-                    "#ff5722",
-                  ]}
-                  onChange={onColorChange}
-                />
-                <button
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    padding: "0 5px",
-                  }}
-                >
-                  <SettingsOutlinedIcon
-                    sx={{ fontSize: "18px", color: "#354832" }}
-                  />
-                </button>
-              </div>
             </Row>
             <Row
               style={{
-                marginTop: "20px",
+                marginTop: "50px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
-              <Col className="col-6">
+              <Col className="col-4">
                 <button
                   style={{
                     width: "100%",
                     fontSize: "14px",
                     fontWeight: "900",
-                    padding: "15px 25px",
+                    padding: "10px 25px",
                     color: "white",
                     backgroundColor: "#FEA150",
                     border: "none",
                     borderRadius: "50px",
                   }}
                 >
-                  Buy Stickers
+                  Next
                 </button>
               </Col>
-
-              <Col className="col-6"></Col>
+              <Col className="col-4">
+                or{" "}
+                <button
+                  style={{
+                    background: "none",
+                    border: "none",
+                    textDecoration: "underline",
+                  }}
+                >
+                  {" "}
+                  Back{" "}
+                </button>
+              </Col>
+              <Col className="col-4"></Col>
             </Row>
           </div>
           {/* <div
-            className="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+            className="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-xs-12"
             style={{
               display: "flex",
               justifyContent: "center",
@@ -334,4 +373,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ShippingBox;
