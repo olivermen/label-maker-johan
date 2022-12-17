@@ -1,0 +1,40 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * factoria:
+ *   - http://typekit.com/eulas/0000000000000000000179df
+ * museo-slab:
+ *   - http://typekit.com/eulas/00000000000000000000ec0b
+ * rosewood-std:
+ *   - http://typekit.com/eulas/000000000000000000013170
+ *
+ * © 2009-2022 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2018-09-19 22:49:44 UTC"}*/
+
+@import url("https://p.typekit.net/p.css?s=1&k=dyb7uei&ht=tk&f=2036.6763.25279&a=4883734&app=typekit&e=css");
+
+@font-face {
+font-family:"museo-slab";
+src:url("https://use.typekit.net/af/a09522/00000000000000000000ec0b/27/l?subset_id=1&fvd=n8&v=3") format("woff2"),url("https://use.typekit.net/af/a09522/00000000000000000000ec0b/27/d?subset_id=1&fvd=n8&v=3") format("woff"),url("https://use.typekit.net/af/a09522/00000000000000000000ec0b/27/a?subset_id=1&fvd=n8&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:800;font-stretch:normal;
+}
+
+@font-face {
+font-family:"rosewood-std";
+src:url("https://use.typekit.net/af/dec021/000000000000000000013170/27/l?subset_id=1&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/dec021/000000000000000000013170/27/d?subset_id=1&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/dec021/000000000000000000013170/27/a?subset_id=1&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"factoria";
+src:url("https://use.typekit.net/af/7b9ed6/0000000000000000000179df/27/l?subset_id=2&fvd=n5&v=3") format("woff2"),url("https://use.typekit.net/af/7b9ed6/0000000000000000000179df/27/d?subset_id=2&fvd=n5&v=3") format("woff"),url("https://use.typekit.net/af/7b9ed6/0000000000000000000179df/27/a?subset_id=2&fvd=n5&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:500;font-stretch:normal;
+}
+
+.tk-museo-slab { font-family: "museo-slab",serif; }
+.tk-rosewood-std { font-family: "rosewood-std",sans-serif; }
+.tk-factoria { font-family: "factoria",serif; }

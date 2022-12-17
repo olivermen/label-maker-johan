@@ -1,0 +1,89 @@
+.editor {
+  height: auto;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 100px;
+  .container {
+    width: 100%;
+    .h1,
+    h1 {
+      font-size: 24px;
+      margin-top: 50px;
+      font-weight: 900;
+      width: 60%;
+      line-height: 40px;
+      color: #fea150;
+    }
+    .h2,
+    h2 {
+      color: black;
+      font-size: 15px;
+      line-height: 21px;
+      font-weight: 800;
+    }
+    .h3,
+    h3 {
+      color: black;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 400;
+      margin-right: 30px;
+    }
+    .h4,
+    h4 {
+      color: black;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 17px;
+    }
+    input {
+      font-size: 14px;
+      padding: 5px 20px;
+      width: 100%;
+      background-color: #fffffff0;
+      border-radius: 20px;
+      border: 3px solid #d9d9d9;
+    }
+    .bottle-div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .bottle {
+        background: url("../../../assets/main/bottle3.webp") no-repeat scroll
+          center;
+        background-size: contain;
+        background-position: bottom;
+        width: 150px;
+        height: 600px;
+        .overlay {
+          background: linear-gradient(
+            to right,
+            #ffffff70 0%,
+            #ffa00010 30%,
+            #ffa00010 80%,
+            #ffffff80 100%
+          );
+          width: 150px;
+          position: relative;
+          top: -150px;
+          // left: 2.5px;
+          height: 150px;
+          z-index: 20;
+        }
+      }
+    }
+
+    @media (max-width: 1200px) {
+      margin: auto;
+    }
+  }
+}
+.ant-picker {
+  padding: 0 0 !important;
+}
+
+.anticon-calendar {
+  color: #333 !important;
+}

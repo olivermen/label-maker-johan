@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+@import url("https://fonts.googleapis.com/css?family=La+Belle+Aurore");
+@import url("https://fonts.googleapis.com/css?family=Bevan");
+
+:root {
+  --primary-color: #741ce8;
+  --primary-hover: #452bc7;
+
+  --premium-color: #ffcd00;
+  --premium-hover: #deb000;
+
+  --btn-light-hover: #22252d;
+  --btn-default-color: #5b43d6;
+
+  --border-color: #d1d9d9;
+
+  --bg-color-light: rgb(121, 52, 204);
+  --bg-gradient-start: #7a19f1;
+  --bg-gradient-end: #5a00d1;
+
+  --white-color: #ffffff;
+  --black-color: #000000;
+  --font-color: #292626;
+
+  --bg1-url: "src/assets/images/bg1.webp";
+  --bg2-url: "src/assets/images/bg2.jpg";
+
+  --bottle-primary-width: "180px";
+  --bottle-second-width: "150px";
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+
+  #submitButton {
+    background: #fea150 !important;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

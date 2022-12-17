@@ -1,0 +1,11 @@
+@import "../../index.scss";
+.payment {
+  background-image: url("../../assets/main/order-bg.jpg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: "Poppins";
+}

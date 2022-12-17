@@ -1,0 +1,12 @@
+.background {
+  height: 100vh;
+  .orange-area {
+    background-color: #fea150;
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    border-radius: 50%;
+    top: -70%;
+    right: -70%;
+  }
+}

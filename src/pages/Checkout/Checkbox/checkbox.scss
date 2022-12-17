@@ -1,0 +1,182 @@
+.checkout {
+  text-align: center;
+  .h1,
+  h1 {
+    font-size: 70px;
+    font-weight: 900;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    color: #ffc404;
+    line-height: 1;
+    text-shadow: -1px 0px 5px #00000050, 1px 0px 5px #00000050,
+      0px -1px 5px #00000050, 0px 1px 5px #00000050;
+    -webkit-text-stroke: 1px black;
+    @media (max-width: 1400px) {
+      font-size: 60px;
+    }
+    @media (max-width: 1200px) {
+      font-size: 50px;
+    }
+    @media (max-width: 991px) {
+      font-size: 40px;
+    }
+  }
+  .h2,
+  h2 {
+    font-size: 18.5px;
+    color: white;
+    text-shadow: 1px 1px 2px #000000c0;
+
+    @media (max-width: 1400px) {
+      font-size: 15px;
+    }
+    @media (max-width: 1200px) {
+      font-size: 13px;
+    }
+    @media (max-width: 991px) {
+      font-size: 10px;
+    }
+  }
+  .edit-box {
+    background-color: #00000080;
+    border-radius: 10px;
+    border: 1px solid #ffffff90;
+    width: 70%;
+    padding: 5px 20px;
+    margin-left: 0px;
+    @media (max-width: 991px) {
+      width: 90%;
+    }
+    .left-arrow-btn {
+      background: url("../../../assets/main/left-arrow.webp");
+      background-size: cover;
+      cursor: pointer;
+      border: none;
+      height: 45px;
+      width: 45px;
+      position: absolute;
+      left: 5%;
+      bottom: 30%;
+    }
+
+    .right-arrow-btn {
+      background: url("../../../assets/main/right-arrow.webp");
+      background-size: cover;
+      cursor: pointer;
+      border: none;
+      height: 45px;
+      width: 45px;
+      position: absolute;
+      right: 5%;
+      bottom: 30%;
+    }
+    .edit-setting {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      margin-top: 20px;
+      padding-left: 40px;
+      h3 {
+        color: #ffc404;
+        font-size: 30px;
+        line-height: 1;
+        margin: 3px 0;
+        padding: 0 0;
+      }
+      h4 {
+        color: #ffffffe0;
+        font-weight: 100;
+        font-size: 18px;
+        line-height: 1;
+        margin: 3px 0;
+        padding: 0 0;
+      }
+      .edit-input {
+        color: white;
+        margin-top: 7px;
+        margin-right: 3px;
+        input {
+          border-radius: 8px;
+          background-color: white;
+          font-size: 20px;
+          box-shadow: 2px 2px 5px #00000080;
+          border: none;
+        }
+      }
+    }
+  }
+  .checkout {
+    background-color: #00000080;
+    border-radius: 10px;
+    border: 1px solid #ffffff90;
+    width: 70%;
+    padding: 5px 20px;
+    margin-top: 20px;
+    margin-left: 0px;
+    @media (max-width: 991px) {
+      width: 90%;
+    }
+    h3 {
+      color: #ffc404;
+      font-size: 30px;
+      line-height: 1;
+      margin: 20px 0 20px 0;
+      padding: 0 0;
+    }
+    h4 {
+      color: #ffffffe0;
+      font-weight: 100;
+      font-size: 18px;
+      line-height: 1;
+      margin: 3px 0;
+      padding: 0 0;
+    }
+    .total {
+      h2 {
+        font-size: 22px;
+        font-weight: 900;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        transform: scale(1, 0.7);
+      }
+    }
+  }
+
+  .footer {
+    border-radius: 10px;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: 0px;
+    @media (max-width: 991px) {
+      width: 90%;
+    }
+    select {
+      background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+      background-repeat: no-repeat;
+      background-position-x: 100%;
+      background-position-y: 5px;
+      border: 1px solid #dfdfdf;
+      border-radius: 2px;
+      margin-right: 2rem;
+      padding: 1rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .switch-language {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      font-size: 15px;
+      color: white;
+      margin-top: 0;
+      margin-left: 10px;
+    }
+  }
+}

@@ -1,0 +1,124 @@
+.reviewbox {
+  height: auto;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 100px;
+  .container {
+    width: 100%;
+    h1,
+    .h1 {
+      font-size: 24px;
+      margin-top: 50px;
+      font-weight: 900;
+      width: 60%;
+      line-height: 40px;
+      color: #fea150;
+    }
+    h2,
+    .h2 {
+      color: black;
+      font-size: 15px;
+      line-height: 21px;
+      font-weight: 800;
+    }
+    h3,
+    .h3 {
+      color: black;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 400;
+      margin-right: 30px;
+    }
+    h4,
+    .h4 {
+      color: black;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 17px;
+    }
+    input {
+      font-size: 14px;
+      padding: 5px 20px;
+      width: 100%;
+      background-color: #fffffff0;
+      border-radius: 20px;
+      border: 3px solid #d9d9d9;
+    }
+
+    @media (max-width: 1200px) {
+      margin: auto;
+    }
+  }
+}
+.ant-picker {
+  padding: 0 0 !important;
+}
+
+.anticon-calendar {
+  color: #333 !important;
+}
+
+.donate-now {
+  list-style-type: none;
+  margin: 15px 0 0 0;
+  padding: 0;
+}
+
+.donate-now li {
+  float: left;
+  width: 50%;
+  height: 35px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.donate-now label,
+.donate-now input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e3e3e3;
+}
+
+.donate-now input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+}
+
+.donate-now input[type="radio"]:checked + label,
+.Checked + label {
+  background: #fea150;
+  color: white;
+}
+
+.donate-now label {
+  text-align: center;
+  padding: 6px 5px;
+  cursor: pointer;
+  z-index: 90;
+}
+
+.donate-now .big {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.donate-now .small {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.donate-now label:hover {
+  background: #ddd;
+}
+
+.ant-steps-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.anticon-spin {
+  color: red !important;
+}
