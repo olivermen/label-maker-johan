@@ -60,13 +60,11 @@ const ReviewBox: React.FC = () => {
 
   const finish = () => {
     handleDownloadPdf();
-    navigate("/");
+    // navigate("/");
   };
 
   const handleDownloadPdf = async () => {
     const element: any = printRef.current;
-    const canvas = await html2canvas(element);
-    const data = canvas.toDataURL("image/png");
     let lwidth = 104; // mm
     let lheight = 100; // mm
 
@@ -74,15 +72,18 @@ const ReviewBox: React.FC = () => {
       lwidth = 97.6;
       lheight = 90;
     }
-
     const pdf = new jsPDF("portrait", "mm", [lwidth, lheight]);
 
     const pdfWidth = pdf.internal.pageSize.getWidth();
     // const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
     const pdfHeight = pdf.internal.pageSize.getHeight();
-
-    pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("label.pdf");
+    html2canvas(element, {
+      scale: 5,
+    }).then(function (canvas) {
+      var data = canvas.toDataURL("image/png");
+      pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("label.pdf");
+    });
   };
 
   return (

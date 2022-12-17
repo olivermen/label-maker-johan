@@ -163,20 +163,7 @@ export const BigLabel3 = ({
         alt="upload"
         style={{ margin: "2px 0px 2px 0px", maxWidth: "100%" }}
       />
-      <div className="label-image1">
-        <Draggable defaultPosition={{ x: 0, y: 0 }}>
-          <div>
-            <img
-              src={file}
-              width={376}
-              height={376}
-              alt="upload"
-              className="noDrag"
-              style={{ position: "absolute" }}
-            />
-          </div>
-        </Draggable>
-      </div>
+
       <div className="label-text" style={{ width: "380px", height: "380px" }}>
         <p
           style={{
@@ -260,6 +247,20 @@ export const BigLabel3 = ({
         >
           {batchDate}{" "}
         </p>
+      </div>
+      <div className="label-image1">
+        <Draggable defaultPosition={{ x: 0, y: 0 }}>
+          <div>
+            <img
+              src={file}
+              width={376}
+              height={376}
+              alt="upload"
+              className="noDrag"
+              style={{ position: "absolute" }}
+            />
+          </div>
+        </Draggable>
       </div>
     </div>
   );
