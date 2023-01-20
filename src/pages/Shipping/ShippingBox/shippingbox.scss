@@ -4,6 +4,83 @@
   align-items: center;
   .container {
     width: 100%;
+    .shipping-box {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      .step-div {
+        background: #89898940;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+    }
+    .first-name {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom: none;
+      border-right: none;
+      width: 50%;
+    }
+
+    .last-name {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-top-left-radius: 0px;
+      border-bottom: none;
+      border-left: none;
+      width: 50%;
+    }
+    .customer-email {
+      border-radius: 0px;
+      border-top: none;
+      border-bottom: none;
+    }
+    .customer-phone {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-top: none;
+    }
+    .select-country {
+      width: 100%;
+      padding: 5px 20px !important;
+      border: 3px solid #d9d9d9;
+      border-radius: 5px !important;
+    }
+    .mt-50 {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mt-20 {
+      margin-top: 20px;
+    }
+    .shipping-btn {
+      width: 100%;
+      font-size: 14px;
+      font-weight: 900;
+      padding: 10px 25px;
+      color: white;
+      background-color: #fea150;
+      border: none;
+      border-radius: 50px;
+    }
+    .back-link {
+      background: none;
+      border: none;
+      text-decoration: underline;
+      color: black;
+    }
+    .shipping-right-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .height-380 {
+      height: 380px;
+    }
     .h1,
     h1 {
       font-size: 24px;
@@ -12,14 +89,12 @@
       width: 60%;
       line-height: 40px;
       color: black;
-      font-family: "Space Mono";
     }
     .h2,
     h2 {
       color: black;
       font-size: 15px;
       line-height: 21px;
-      font-weight: 800;
     }
     .h3,
     h3 {

@@ -28,6 +28,15 @@ const Label18 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(6);
+  const [typeFontSize, setTypeFontSize] = useState(5);
+  useEffect(() => {
+    if (bottleType.length >= 20) {
+      var t = 80 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(5);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 7) {
@@ -57,7 +66,7 @@ const Label18 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -88,7 +97,7 @@ const Label18 = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "4px",
+            marginTop: "5px",
             fontWeight: "200",
             height: "7px",
           }}
@@ -130,12 +139,15 @@ const Label18 = ({
         <p
           style={{
             color: "#492B0B",
-            fontSize: "5px",
+            fontSize: typeFontSize,
             marginTop: "1px",
             position: "relative",
             fontWeight: "200",
             textAlign: "center",
             height: "6px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           {bottleType}
@@ -168,6 +180,15 @@ export const BigLabel18 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(35.4);
   const [tagFontSize, setTagFontSize] = useState(15);
+  const [typeFontSize, setTypeFontSize] = useState(12.65);
+  useEffect(() => {
+    if (bottleType.length >= 20) {
+      var t = 202 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(12.65);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 7) {
@@ -198,7 +219,7 @@ export const BigLabel18 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -229,7 +250,7 @@ export const BigLabel18 = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "7px",
+            marginTop: "9px",
             fontWeight: "200",
             height: "18px",
           }}
@@ -271,10 +292,14 @@ export const BigLabel18 = ({
         <p
           style={{
             color: "#492B0B",
-            fontSize: "13px",
+            fontSize: typeFontSize,
             marginTop: "1px",
             position: "relative",
             fontWeight: "200",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             textAlign: "center",
             height: "17px",
           }}

@@ -28,10 +28,19 @@ const Label29 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(6);
+  const [typeFontSize, setTypeFontSize] = useState(4);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 40 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(4);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 6) {
-      var t = 80 / (bottleName.length + 1);
+      var t = 70 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
       setNameFontSize(14);
@@ -57,7 +66,7 @@ const Label29 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -149,6 +158,11 @@ const Label29 = ({
                 color: "#FFFFFF",
                 position: "relative",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: typeFontSize,
+                height: "5px",
               }}
             >
               {bottleType}
@@ -184,10 +198,19 @@ export const BigLabel29 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(35);
   const [tagFontSize, setTagFontSize] = useState(15);
+  const [typeFontSize, setTypeFontSize] = useState(10.1);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 101 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(10.1);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 6) {
-      var t = 202 / (bottleName.length + 1);
+      var t = 177 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
       setNameFontSize(35);
@@ -214,7 +237,7 @@ export const BigLabel29 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -307,6 +330,11 @@ export const BigLabel29 = ({
                 position: "relative",
                 fontWeight: "200",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: typeFontSize,
+                height: "12px",
               }}
             >
               {bottleType}

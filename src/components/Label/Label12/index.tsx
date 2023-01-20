@@ -29,6 +29,15 @@ const Label12 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(8);
   const [tagFontSize, setTagFontSize] = useState(12);
+  const [typeFontSize, setTypeFontSize] = useState(5);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 110 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(5);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 10) {
@@ -60,7 +69,7 @@ const Label12 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px 0px 2px 2px", maxWidth: "100%" }}
       />
 
@@ -132,10 +141,13 @@ const Label12 = ({
         </div>
         <p
           style={{
-            fontSize: `5px`,
+            fontSize: typeFontSize,
             position: "relative",
             fontFamily: "Bevan",
             marginTop: "0px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             color: color,
             textAlign: "center",
             height: "6px",
@@ -172,6 +184,15 @@ export const BigLabel12 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(20);
   const [tagFontSize, setTagFontSize] = useState(28);
+  const [typeFontSize, setTypeFontSize] = useState(12.65);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 278.3 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(12.65);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 10) {
@@ -204,7 +225,7 @@ export const BigLabel12 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px 0px 2px 0px", maxWidth: "100%" }}
       />
       <div className="label-image1">
@@ -214,7 +235,7 @@ export const BigLabel12 = ({
               src={file}
               width={376}
               height={376}
-              alt="upload"
+              alt="upload image"
               className="noDrag"
               style={{ position: "absolute" }}
             />
@@ -288,7 +309,10 @@ export const BigLabel12 = ({
         </div>
         <p
           style={{
-            fontSize: `12px`,
+            fontSize: typeFontSize,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
 
             position: "relative",
             fontFamily: "Bevan",

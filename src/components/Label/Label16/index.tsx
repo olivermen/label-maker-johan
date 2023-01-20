@@ -5,6 +5,7 @@ import "./label16.scss";
 
 import label from "../../../assets/labels/Label-16.svg";
 import { borderColor } from "@mui/system";
+import { type } from "os";
 
 interface LabelProps {
   bottleName: string;
@@ -29,6 +30,15 @@ const Label16 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(10);
+  const [typeFontSize, setTypeFontSize] = useState(5);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 80 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(5);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 8) {
@@ -58,7 +68,7 @@ const Label16 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div className="label-text" style={{ width: "150px", height: "150px" }}>
@@ -130,7 +140,11 @@ const Label16 = ({
         <p
           style={{
             color: "black",
-            fontSize: `5px`,
+            fontSize: typeFontSize,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+
             position: "relative",
             textAlign: "center",
             height: "6px",
@@ -164,20 +178,29 @@ export const BigLabel16 = ({
   batchDate,
   bottleType,
 }: LabelProps) => {
-  const [nameFontSize, setNameFontSize] = useState(37);
+  const [nameFontSize, setNameFontSize] = useState(36);
   const [tagFontSize, setTagFontSize] = useState(25);
+  const [typeFontSize, setTypeFontSize] = useState(12.65);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 202 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(12.65);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 8) {
-      var t = 180 / (bottleName.length + 1);
+      var t = 202 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
-      setNameFontSize(37);
+      setNameFontSize(36);
     }
   }, [bottleName]);
   useEffect(() => {
     if (tagLine.length >= 8) {
-      var t = 180 / (tagLine.length + 1);
+      var t = 202 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
       setTagFontSize(25);
@@ -197,7 +220,7 @@ export const BigLabel16 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div className="label-text" style={{ width: "380px", height: "380px" }}>
@@ -269,10 +292,14 @@ export const BigLabel16 = ({
         <p
           style={{
             color: "black",
-            fontSize: `12.5px`,
+            fontSize: typeFontSize,
             position: "relative",
             textAlign: "center",
             height: "14px",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           {bottleType}

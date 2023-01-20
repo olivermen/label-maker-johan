@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Divider, Input, Select, Space } from "antd";
 import type { InputRef } from "antd";
 
@@ -51,6 +51,7 @@ import { BigLabel28 } from "../../../components/Label/Label28";
 import { BigLabel29 } from "../../../components/Label/Label29";
 import { BigLabel30 } from "../../../components/Label/Label30";
 import { useStepContext } from "@mui/material";
+import { Helmet } from "react-helmet";
 
 let index = 0;
 
@@ -59,24 +60,43 @@ const OrderBox: React.FC = () => {
   const { T, update }: any = myStore();
   const navigate = useNavigate();
 
-  const [price, setPrice] = useState(14);
-  const [count, setCount] = useState(12);
+  const [price, setPrice] = useState(7);
+  const [count, setCount] = useState(5);
   const [priceIndex, setPriceIndex] = useState(0);
   const printRef = React.useRef<HTMLDivElement>(null);
+  const [lang, setLang] = useState("/en");
 
   const [check, setCheck] = useState("small");
   const [selectedValue, setSelectedValue] = React.useState("a");
+
   const [items, setItems] = useState([
-    "12 labels ($14)",
-    "36 labels ($22)",
-    "48 labels ($28)",
-    "72 labels ($38)",
-    "120 labels ($56)",
-    "200 labels ($86)",
-    "500 labels ($170)",
+    `5 labels (${(7 + G.vat * 7) * (G.currency == "EUR" ? 1 : 10)} ${
+      G.currency == "EUR" ? "€" : "kr"
+    })`,
+    `12 labels (${(14 + G.vat * 14) * (G.currency == "EUR" ? 1 : 10)} ${
+      G.currency == "EUR" ? "€" : "kr"
+    })`,
+    `36 labels (${(22 + G.vat * 22) * (G.currency == "EUR" ? 1 : 10)} ${
+      G.currency == "EUR" ? "€" : "kr"
+    })`,
+    `48 labels (${(28 + G.vat * 28) * (G.currency == "EUR" ? 1 : 10)} ${
+      G.currency == "EUR" ? "€" : "kr"
+    })`,
+    `72 labels (${(38 + G.vat * 38) * (G.currency == "EUR" ? 1 : 10)} ${
+      G.currency == "EUR" ? "€" : "kr"
+    })`,
+    `120 labels (${(56 + G.vat * 56) * (G.currency == "EUR" ? 1 : 10)} ${
+      G.currency == "EUR" ? "€" : "kr"
+    })`,
+    `200 labels (${(86 + G.vat * 86) * (G.currency == "EUR" ? 1 : 10)} ${
+      G.currency == "EUR" ? "€" : "kr"
+    })`,
+    `500 labels (${(170 + G.vat * 170) * (G.currency == "EUR" ? 1 : 10)} ${
+      G.currency == "EUR" ? "€" : "kr"
+    })`,
   ]);
-  const arrPrice = [14, 22, 28, 38, 56, 86, 170];
-  const arrCount = [12, 36, 48, 72, 120, 200, 500];
+  const arrPrice = [7, 14, 22, 28, 38, 56, 86, 170];
+  const arrCount = [5, 12, 36, 48, 72, 120, 200, 500];
   const [name, setName] = useState("");
   const inputRef = useRef<InputRef>(null);
   const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -104,9 +124,24 @@ const OrderBox: React.FC = () => {
     inputProps: { "aria-label": item },
   });
 
+  useEffect(() => {
+    if(G.lang == "en-US") setLang("/en");
+    else if(G.lang == "sw-SW") setLang("/sv");
+    else setLang("/es");
+  }, []);
+
   const toShippingPage = () => {
     update({ price: price, size: check, count: count });
-    navigate("/shipping");
+    if (G.lang === "en-US") 
+    { 
+      navigate("/en/shipping");
+    }
+    if (G.lang === "sw-SW") {
+      navigate("/sv/shipping");
+    }
+    if (G.lang === "es-ES") {
+      navigate("/es/shipping");
+    }
   };
 
   const handlePrice = (val: any) => {
@@ -116,30 +151,32 @@ const OrderBox: React.FC = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>
+          {T("title.browse")}
+        </title>
+        <meta name="title" content={T("title.browse")} />
+        <meta
+          name="description"
+          content={T("description.browse")}
+        />
+        <meta
+          name="keywords"
+          content={T("keyword.common")}
+        />
+      </Helmet>
     <div className="orderbox">
       <div className="container">
         <div className="row">
-          <div
-            className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              textAlign: "left",
-            }}
-          >
-            <div
-              style={{
-                background: "#89898940",
-                padding: "5px 10px",
-                borderRadius: "5px",
-              }}
-            >
+          <div className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12 order-div">
+            <div className="step-div">
               <Steps />
             </div>
             <h1 className="gradient-h1">{T("order.title")}</h1>
-            <span className="h3">{T("order.content")}</span>
-            <Row style={{ marginTop: "20px" }}>
-              <span className="h4">Side</span>
+            <h2>{T("order.content")}</h2>
+            <Row className="row-mt-20">
+              <h3>Side</h3>
               <FormControl>
                 <RadioGroup
                   row
@@ -156,15 +193,7 @@ const OrderBox: React.FC = () => {
                       },
                     }}
                   />
-                  <p
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      margin: "0 3px",
-                    }}
-                  >
-                    {T("home.front")}
-                  </p>
+                  <p className="order-text">{T("home.front")}</p>
                   {/* <Radio
                     {...controlProps("b")}
                     sx={{
@@ -186,11 +215,11 @@ const OrderBox: React.FC = () => {
                 </RadioGroup>
               </FormControl>
             </Row>
-            <Row style={{ marginTop: "20px" }}>
+            <Row className="row-mt-20">
               <Col className="col-12">
-                <span className="h4">{T("order.numberoflabels")}</span>
+                <h4>{T("order.numberoflabels")}</h4>
                 <Select
-                  style={{ width: "100%" }}
+                  className="width-100"
                   placeholder="Order Label Count"
                   onChange={(val) => {
                     handlePrice(val);
@@ -199,21 +228,21 @@ const OrderBox: React.FC = () => {
                   dropdownRender={(menu) => (
                     <>
                       {menu}
-                      <Divider style={{ margin: "8px 0" }} />
-                      <Space style={{ padding: "0 8px 4px" }}>
-                        <Input
+                      {/* <Divider /> */}
+                      {/* <Space> */}
+                      {/* <Input
                           placeholder="Please enter item"
                           ref={inputRef}
                           value={name}
                           onChange={onNameChange}
-                        />
-                        <button
+                        /> */}
+                      {/* <button
                           onClick={() => addItem}
                           style={{ border: "none", background: "transparent" }}
                         >
                           + Add item
-                        </button>
-                      </Space>
+                        </button> */}
+                      {/* </Space> */}
                     </>
                   )}
                   options={items.map((item, index) => ({
@@ -225,20 +254,15 @@ const OrderBox: React.FC = () => {
               </Col>
             </Row>
 
-            <Row style={{ marginTop: "20px" }}>
+            <Row className="row-mt-20">
               <Col className="col-12">
-                <span
-                  className="h4"
-                  style={{ color: "#646464", fontWeight: "100" }}
-                >
-                  Free worldwide shipping included.
-                </span>
+                <h4 className="order-comment">{T("order.comment")}</h4>
               </Col>
             </Row>
 
-            <Row style={{ marginTop: "20px" }}>
+            <Row className="row-mt-20">
               <Col className="col-12">
-                <span className="h4">Size</span>
+                <h4>{T("order.size")}</h4>
                 <ul className="donate-now">
                   <li>
                     <input
@@ -267,59 +291,24 @@ const OrderBox: React.FC = () => {
                 </ul>
               </Col>
             </Row>
-            <Row
-              style={{
-                marginTop: "50px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <Row className="row-mt-50">
               <Col className="col-4">
-                <button
-                  style={{
-                    width: "100%",
-                    fontSize: "14px",
-                    fontWeight: "900",
-                    padding: "10px 25px",
-                    color: "white",
-                    backgroundColor: "#FEA150",
-                    border: "none",
-                    borderRadius: "50px",
-                  }}
-                  onClick={toShippingPage}
-                >
+                <button className="order-btn" onClick={toShippingPage}>
                   {T("order.next")}
                 </button>
               </Col>
 
               <Col className="col-4">
                 or
-                <Link to="/edit">
-                  <button
-                    style={{
-                      background: "none",
-                      border: "none",
-                      textDecoration: "underline",
-                    }}
-                  >
-                    {T("order.back")}
-                  </button>
+                <Link to={lang + "/edit"}>
+                  <button className="back-btn">{T("order.back")}</button>
                 </Link>
               </Col>
               <Col className="col-4"></Col>
             </Row>
           </div>
-          <div
-            className="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-xs-12"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
-            <div ref={printRef} style={{ height: "380px" }}>
+          <div className="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-xs-12 order-label-div">
+            <div ref={printRef} className="height-380">
               {G.curLabel === 0 ? (
                 <SBigLabel1
                   bottleName={G && G.bottleName}
@@ -667,6 +656,7 @@ const OrderBox: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

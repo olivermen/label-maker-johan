@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./label21.scss";
 
 import label from "../../../assets/labels/Label-21.svg";
+import { type } from "os";
 
 interface LabelProps {
   bottleName: string;
@@ -28,6 +29,15 @@ const Label21 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(6);
+  const [typeFontSize, setTypeFontSize] = useState(5);
+  useEffect(() => {
+    if (bottleType.length >= 20) {
+      var t = 110 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(5);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 8) {
@@ -57,7 +67,7 @@ const Label21 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -128,7 +138,7 @@ const Label21 = ({
         <p
           style={{
             color: "#E5B2A8",
-            fontSize: "5px",
+            fontSize: typeFontSize,
             marginTop: "1px",
             position: "relative",
 
@@ -169,6 +179,16 @@ export const BigLabel21 = ({
   const [nameFontSize, setNameFontSize] = useState(37);
   const [tagFontSize, setTagFontSize] = useState(17);
 
+  const [typeFontSize, setTypeFontSize] = useState(12.65);
+  useEffect(() => {
+    if (bottleType.length >= 20) {
+      var t = 291.5 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(12.65);
+    }
+  }, [bottleType]);
+
   useEffect(() => {
     if (bottleName.length >= 8) {
       var t = 278 / (bottleName.length + 1);
@@ -198,7 +218,7 @@ export const BigLabel21 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -230,6 +250,7 @@ export const BigLabel21 = ({
             alignItems: "center",
             justifyContent: "center",
             marginTop: "0px",
+            height: "22px",
           }}
         >
           {tagLine}
@@ -268,7 +289,7 @@ export const BigLabel21 = ({
         <p
           style={{
             color: "#E5B2A8",
-            fontSize: "12px",
+            fontSize: typeFontSize,
             marginTop: "3px",
             position: "relative",
 

@@ -9,19 +9,23 @@ import "./order.scss";
 // import sub components
 import TopMenuBar from "../../components/TopMenuBar";
 import OrderBox from "./OrderBox";
+import { Helmet } from "react-helmet";
 
 const Order = () => {
   return (
-    <div className="order">
-      <React.Fragment>
-        <CssBaseline />
-        <Container maxWidth="xl">
-          <TopMenuBar />
-          <OrderBox />
-          {/* {status === "Sign In" ? <Login /> : ""} */}
-        </Container>
-      </React.Fragment>
-    </div>
+    <>
+      
+      <div className="order">
+        <React.Fragment>
+          <CssBaseline />
+          <Container maxWidth="xl">
+            <TopMenuBar />
+            <OrderBox />
+            {/* {status === "Sign In" ? <Login /> : ""} */}
+          </Container>
+        </React.Fragment>
+      </div>
+    </>
   );
 };
 

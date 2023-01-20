@@ -2,8 +2,60 @@
   height: auto;
   display: flex;
   align-items: flex-end;
+  z-index: 50;
   .container {
     width: 100%;
+    .review-row {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      .step-div {
+        background: #89898940;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+    }
+    .row-mt-30 {
+      margin-top: 30px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
+    .btn-review {
+      width: 100%;
+      font-size: 14px;
+      font-weight: 900;
+      padding: 10px 10px;
+      color: white;
+      background-color: #fea150;
+      border: none;
+      border-radius: 50px;
+    }
+    .recipe-paper {
+      background-color: #53535320;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    .left-paper {
+      display: flex;
+      flex-direction: column;
+      .recipe-text {
+        color: #ac2817;
+        margin-top: 5px;
+      }
+    }
+
+    .mt-10 {
+      margin-top: 15px;
+    }
+    .right-paper {
+      display: flex;
+      flex-direction: column;
+      .recipe-right-text {
+        margin-top: 5px;
+      }
+    }
     h1,
     .h1 {
       font-size: 24px;
@@ -12,7 +64,6 @@
       width: 60%;
       line-height: 40px;
       color: black;
-      font-family: "Space Mono";
     }
     h2,
     .h2 {
@@ -26,8 +77,19 @@
       color: black;
       font-size: 14px;
       line-height: 21px;
-      font-weight: 400;
+      font-weight: 800;
       margin-right: 30px;
+    }
+    .review-right-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .review-print {
+      height: 380px;
+      width: 380px;
+      z-index: -200;
     }
     h4,
     .h4 {

@@ -2,8 +2,69 @@
   height: auto;
   display: flex;
   align-items: flex-end;
+  z-index: 50;
   .container {
     width: 100%;
+    .pay-div {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      .step-div {
+        background: #89898940;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+      .recipe-div {
+        background-color: #53535330;
+        padding: 10px 20px;
+        border-radius: 5px;
+        .paper-div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+    }
+    .paybox-div {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .height-380 {
+      height: 380px;
+    }
+    .pay-bottle-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .back-link {
+      background: none;
+      border: none;
+      text-decoration: underline;
+      color: black;
+    }
+    .pay-btn {
+      width: 100%;
+      font-size: 14px;
+      font-weight: 900;
+      padding: 10px 10px;
+      color: white;
+      background-color: #fea150;
+      border: none;
+      border-radius: 50px;
+    }
+    .row-mt-50 {
+      margin-top: 50px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
+    .row-mt-20 {
+      margin-top: 20px;
+    }
     h1,
     .h1 {
       font-size: 24px;
@@ -12,7 +73,6 @@
       width: 60%;
       line-height: 40px;
       color: black;
-      font-family: "Space Mono";
     }
     h2,
     .h2 {

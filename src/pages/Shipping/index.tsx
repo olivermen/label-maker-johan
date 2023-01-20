@@ -9,19 +9,22 @@ import "./shipping.scss";
 // import sub components
 import TopMenuBar from "../../components/TopMenuBar";
 import ShippingBox from "./ShippingBox";
+import { Helmet } from "react-helmet";
 
 const Shipping = () => {
   return (
-    <div className="shipping">
-      <React.Fragment>
-        <CssBaseline />
-        <Container maxWidth="xl">
-          <TopMenuBar />
-          <ShippingBox />
-          {/* {status === "Sign In" ? <Login /> : ""} */}
-        </Container>
-      </React.Fragment>
-    </div>
+    <>
+      <div className="shipping">
+        <React.Fragment>
+          <CssBaseline />
+          <Container maxWidth="xl">
+            <TopMenuBar />
+            <ShippingBox />
+            {/* {status === "Sign In" ? <Login /> : ""} */}
+          </Container>
+        </React.Fragment>
+      </div>
+    </>
   );
 };
 

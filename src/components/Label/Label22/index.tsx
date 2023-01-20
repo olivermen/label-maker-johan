@@ -28,10 +28,19 @@ const Label22 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(6);
+  const [typeFontSize, setTypeFontSize] = useState(4);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 40 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(4);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
-    if (bottleName.length >= 6) {
-      var t = 70 / (bottleName.length + 1);
+    if (bottleName.length >= 5) {
+      var t = 60 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
       setNameFontSize(14);
@@ -57,7 +66,7 @@ const Label22 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -149,6 +158,11 @@ const Label22 = ({
                 color: "#B6804A",
                 position: "relative",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: typeFontSize,
+                height: "5px",
               }}
             >
               {bottleType}
@@ -182,15 +196,24 @@ export const BigLabel22 = ({
   batchDate,
   bottleType,
 }: LabelProps) => {
-  const [nameFontSize, setNameFontSize] = useState(33);
-  const [tagFontSize, setTagFontSize] = useState(15);
+  const [nameFontSize, setNameFontSize] = useState(35.4);
+  const [tagFontSize, setTagFontSize] = useState(15.18);
+  const [typeFontSize, setTypeFontSize] = useState(10.1);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 101.2 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(10.1);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
-    if (bottleName.length >= 6) {
-      var t = 178 / (bottleName.length + 1);
+    if (bottleName.length >= 5) {
+      var t = 152 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
-      setNameFontSize(33);
+      setNameFontSize(35.4);
     }
   }, [bottleName]);
   useEffect(() => {
@@ -198,7 +221,7 @@ export const BigLabel22 = ({
       var t = 128 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
-      setTagFontSize(15);
+      setTagFontSize(15.18);
     }
   }, [tagLine]);
   return (
@@ -214,7 +237,7 @@ export const BigLabel22 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -307,6 +330,11 @@ export const BigLabel22 = ({
                 position: "relative",
                 fontWeight: "200",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: typeFontSize,
+                height: "12px",
               }}
             >
               {bottleType}

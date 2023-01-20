@@ -38,7 +38,7 @@ const Label14 = ({
     }
   }, [bottleName]);
   useEffect(() => {
-    if (tagLine.length >= 10) {
+    if (tagLine.length >= 15) {
       var t = 130 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
@@ -57,7 +57,7 @@ const Label14 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -176,7 +176,7 @@ export const BigLabel14 = ({
     }
   }, [bottleName]);
   useEffect(() => {
-    if (tagLine.length >= 10) {
+    if (tagLine.length >= 15) {
       var t = 330 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
@@ -197,7 +197,7 @@ export const BigLabel14 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div

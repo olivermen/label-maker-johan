@@ -33,7 +33,7 @@ const Label5 = ({
 
   useEffect(() => {
     if (bottleName.length >= 5) {
-      var t = 60 / (bottleName.length + 1);
+      var t = 50 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
       setNameFontSize(9);
@@ -68,7 +68,7 @@ const Label5 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div className="label-text" style={{ width: "150px", height: "150px" }}>
@@ -108,6 +108,9 @@ const Label5 = ({
             fontSize: tagFontSize,
             position: "relative",
             textAlign: "center",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             fontFamily: "La Belle Aurore",
             marginTop: "50px",
             height: "14px",
@@ -162,16 +165,16 @@ export const BigLabel5 = ({
   batchDate,
   bottleType,
 }: LabelProps) => {
-  const [nameFontSize, setNameFontSize] = useState(22);
+  const [nameFontSize, setNameFontSize] = useState(22.7);
   const [tagFontSize, setTagFontSize] = useState(29.3);
   const [typeFontSize, setTypeFontSize] = useState(20);
 
   useEffect(() => {
     if (bottleName.length >= 5) {
-      var t = 152 / (bottleName.length + 1);
+      var t = 130 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
-      setNameFontSize(22);
+      setNameFontSize(22.7);
     }
   }, [bottleName]);
   useEffect(() => {
@@ -203,7 +206,7 @@ export const BigLabel5 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div className="label-text" style={{ width: "380px", height: "380px" }}>

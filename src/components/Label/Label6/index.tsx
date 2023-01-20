@@ -28,10 +28,11 @@ const Label6 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(7);
+  const [typeFontSize, setTypeFontSize] = useState(5);
 
   useEffect(() => {
     if (bottleName.length >= 10) {
-      var t = 130 / (bottleName.length + 1);
+      var t = 110 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
       setNameFontSize(14);
@@ -45,6 +46,15 @@ const Label6 = ({
       setTagFontSize(7);
     }
   }, [tagLine]);
+
+  useEffect(() => {
+    if (bottleType.length >= 15) {
+      var t = 110 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(5);
+    }
+  }, [bottleType]);
   return (
     <div
       className="label"
@@ -58,7 +68,7 @@ const Label6 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -83,7 +93,7 @@ const Label6 = ({
         <p
           style={{
             color: color,
-            fontSize: `6px`,
+            fontSize: tagFontSize,
             position: "relative",
 
             display: "flex",
@@ -130,11 +140,15 @@ const Label6 = ({
         <p
           style={{
             color: "#B19D71",
-            fontSize: "5px",
+            fontSize: typeFontSize,
             marginTop: "1px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             position: "relative",
             fontWeight: "200",
             textAlign: "center",
+            height: "7px",
           }}
         >
           {bottleType}
@@ -165,26 +179,35 @@ export const BigLabel6 = ({
   batchDate,
   bottleType,
 }: LabelProps) => {
-  const [nameFontSize, setNameFontSize] = useState(37);
-  const [tagFontSize, setTagFontSize] = useState(17);
+  const [nameFontSize, setNameFontSize] = useState(35.42);
+  const [tagFontSize, setTagFontSize] = useState(17.7);
+  const [typeFontSize, setTypeFontSize] = useState(12.65);
 
   useEffect(() => {
     if (bottleName.length >= 10) {
-      var t = 330 / (bottleName.length + 1);
+      var t = 278 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
-      setNameFontSize(37);
+      setNameFontSize(35.42);
     }
   }, [bottleName]);
   useEffect(() => {
     if (tagLine.length >= 10) {
-      var t = 330 / (tagLine.length + 1);
+      var t = 329 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
-      setTagFontSize(17);
+      setTagFontSize(17.7);
     }
   }, [tagLine]);
 
+  useEffect(() => {
+    if (bottleType.length >= 15) {
+      var t = 278 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(12.65);
+    }
+  }, [bottleType]);
   return (
     <div
       className="label"
@@ -199,7 +222,7 @@ export const BigLabel6 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -224,14 +247,14 @@ export const BigLabel6 = ({
         <p
           style={{
             color: color,
-            fontSize: `15px`,
+            fontSize: tagFontSize,
             position: "relative",
 
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             marginTop: "12px",
-            height: "17px",
+            height: "20px",
           }}
         >
           {tagLine}
@@ -271,7 +294,11 @@ export const BigLabel6 = ({
         <p
           style={{
             color: "#B19D71",
-            fontSize: "13px",
+            fontSize: typeFontSize,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+
             marginTop: "3px",
             position: "relative",
             fontWeight: "200",

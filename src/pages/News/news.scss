@@ -3,21 +3,34 @@
   height: auto;
   display: flex;
   align-items: center;
-  margin-left: 80px;
   flex-direction: column;
-
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  .news-row {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  .gray-div {
+    background-color: #55555530;
+    width: 100%;
+    height: 100%;
+  }
   h1 {
     font-weight: 900;
     color: #fea150;
-    margin-bottom: 50px;
+    font-size: 40px;
   }
   h2 {
     font-size: 30px;
-    font-weight: bold;
     margin-bottom: 20px;
   }
   h3 {
     font-size: 20px;
     line-height: 1.5;
+  }
+  p {
+    font-size: 14px;
+  }
+  .faq {
+    width: 100%;
   }
 }

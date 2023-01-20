@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./label23.scss";
 
 import label from "../../../assets/labels/Label-23.svg";
+import { type } from "os";
 
 interface LabelProps {
   bottleName: string;
@@ -28,6 +29,15 @@ const Label23 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(20);
   const [tagFontSize, setTagFontSize] = useState(13);
+  const [typeFontSize, setTypeFontSize] = useState(4);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 40 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(4);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 5) {
@@ -57,7 +67,7 @@ const Label23 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -135,6 +145,11 @@ const Label23 = ({
                 color: "#FFFFFF",
                 position: "relative",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "6px",
+                fontSize: typeFontSize,
               }}
             >
               {bottleType}
@@ -186,6 +201,15 @@ export const BigLabel23 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(51);
   const [tagFontSize, setTagFontSize] = useState(33);
+  const [typeFontSize, setTypeFontSize] = useState(10.1);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 101.2 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(10.1);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 5) {
@@ -216,7 +240,7 @@ export const BigLabel23 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -296,6 +320,12 @@ export const BigLabel23 = ({
                 fontWeight: "200",
                 position: "relative",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+
+                fontSize: typeFontSize,
+                height: "12px",
               }}
             >
               {bottleType}

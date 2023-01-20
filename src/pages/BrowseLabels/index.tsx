@@ -8,18 +8,22 @@ import "./browselabels.scss";
 // import sub components
 import TopMenuBar from "../../components/TopMenuBar";
 import Labels from "./Labels";
+import { Helmet } from "react-helmet";
 
 const BrowseLabels = () => {
   return (
-    <div className="browselabels">
-      <React.Fragment>
-        <CssBaseline />
-        <Container maxWidth="xl">
-          <TopMenuBar />
-          <Labels />
-        </Container>
-      </React.Fragment>
-    </div>
+    <>
+
+      <div className="browselabels">
+        <React.Fragment>
+          <CssBaseline />
+          <Container maxWidth="xl">
+            <TopMenuBar />
+            <Labels />
+          </Container>
+        </React.Fragment>
+      </div>
+    </>
   );
 };
 

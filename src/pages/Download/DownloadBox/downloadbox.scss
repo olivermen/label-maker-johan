@@ -2,8 +2,20 @@
   height: auto;
   display: flex;
   align-items: flex-end;
+  z-index: 50;
   .container {
     width: 100%;
+    .download-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .download-pdf {
+        height: 380px;
+        width: 380px;
+        transform: rotate(90deg);
+      }
+    }
     h1,
     .h1 {
       font-size: 24px;
@@ -12,7 +24,6 @@
       width: 60%;
       line-height: 40px;
       color: black;
-      font-family: "Space Mono";
     }
     h2,
     .h2 {

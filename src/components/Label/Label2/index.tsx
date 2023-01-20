@@ -28,6 +28,7 @@ const Label2 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(7);
+  const [typeFontSize, setTypeFontSize] = useState(5);
 
   useEffect(() => {
     if (bottleName.length >= 8) {
@@ -38,7 +39,7 @@ const Label2 = ({
     }
   }, [bottleName]);
   useEffect(() => {
-    if (tagLine.length >= 8) {
+    if (tagLine.length >= 15) {
       var t = 120 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
@@ -46,6 +47,14 @@ const Label2 = ({
     }
   }, [tagLine]);
 
+  useEffect(() => {
+    if (bottleType.length >= 15) {
+      var t = 60 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(5);
+    }
+  }, [bottleType]);
   return (
     <div
       className="label"
@@ -58,7 +67,7 @@ const Label2 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -94,7 +103,7 @@ const Label2 = ({
             marginTop: "0px",
             marginLeft: "2px",
             transform: "rotate(-15deg)",
-            height: "8px",
+            height: "11px",
           }}
         >
           {tagLine}
@@ -102,7 +111,7 @@ const Label2 = ({
         <p
           style={{
             color: color,
-            fontSize: tagFontSize * 0.5,
+            fontSize: tagFontSize * 0.4,
             position: "relative",
 
             display: "flex",
@@ -111,7 +120,7 @@ const Label2 = ({
             marginTop: "1px",
             marginLeft: "7px",
             transform: "rotate(-15deg)",
-            height: "8px",
+            height: "6px",
           }}
         >
           {tagLine}
@@ -154,11 +163,17 @@ const Label2 = ({
         <p
           style={{
             color: "#432222",
-            fontSize: "5px",
+            fontSize: typeFontSize,
             marginTop: "1px",
             position: "relative",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+
             marginLeft: "-50px",
             textAlign: "center",
+            height: "7px",
           }}
         >
           {bottleType}
@@ -190,25 +205,35 @@ export const BigLabel2 = ({
   batchDate,
   bottleType,
 }: LabelProps) => {
-  const [nameFontSize, setNameFontSize] = useState(35);
-  const [tagFontSize, setTagFontSize] = useState(17.5);
+  const [nameFontSize, setNameFontSize] = useState(35.4);
+  const [tagFontSize, setTagFontSize] = useState(17.7);
+  const [typeFontSize, setTypeFontSize] = useState(12.65);
 
   useEffect(() => {
     if (bottleName.length >= 8) {
-      var t = 303 / (bottleName.length + 1);
+      var t = 303.6 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
-      setNameFontSize(35);
+      setNameFontSize(35.4);
     }
   }, [bottleName]);
   useEffect(() => {
-    if (tagLine.length >= 8) {
-      var t = 303 / (tagLine.length + 1);
+    if (tagLine.length >= 15) {
+      var t = 303.6 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
-      setTagFontSize(17.5);
+      setTagFontSize(17.7);
     }
   }, [tagLine]);
+
+  useEffect(() => {
+    if (bottleType.length >= 15) {
+      var t = 151.8 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(12.65);
+    }
+  }, [bottleType]);
 
   return (
     <div
@@ -224,7 +249,7 @@ export const BigLabel2 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -317,12 +342,17 @@ export const BigLabel2 = ({
         <p
           style={{
             color: "#432222",
-            fontSize: "12.7px",
+            fontSize: typeFontSize,
             marginTop: "1px",
             position: "relative",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             marginLeft: "-120px",
             fontWeight: "200",
             textAlign: "center",
+            height: "17.7px",
           }}
         >
           {bottleType}

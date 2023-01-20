@@ -28,23 +28,32 @@ const Label7 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(8);
   const [tagFontSize, setTagFontSize] = useState(12);
+  const [typeFontSize, setTypeFontSize] = useState(5);
 
   useEffect(() => {
-    if (bottleName.length >= 10) {
-      var t = 130 / (bottleName.length + 1);
+    if (bottleName.length >= 12) {
+      var t = 90 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
       setNameFontSize(8);
     }
   }, [bottleName]);
   useEffect(() => {
-    if (tagLine.length >= 10) {
-      var t = 130 / (tagLine.length + 1);
+    if (tagLine.length >= 7) {
+      var t = 110 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
       setTagFontSize(12);
     }
   }, [tagLine]);
+  useEffect(() => {
+    if (bottleType.length >= 25) {
+      var t = 130 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(5);
+    }
+  }, [bottleType]);
 
   return (
     <div
@@ -58,7 +67,7 @@ const Label7 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px 0px 2px 2px", maxWidth: "100%" }}
       />
       <div className="label-text" style={{ width: "150px", height: "150px" }}>
@@ -90,7 +99,7 @@ const Label7 = ({
             fontFamily: "Bevan",
             marginTop: "2px",
             fontWeight: "900",
-            height: "5px",
+            height: "10px",
           }}
         >
           {bottleName}
@@ -129,13 +138,16 @@ const Label7 = ({
         </div>
         <p
           style={{
-            fontSize: `5px`,
+            fontSize: typeFontSize,
             position: "relative",
             fontFamily: "Bevan",
             marginTop: "0px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             color: "#062452",
             textAlign: "center",
-            height: "7px",
+            height: "5px",
           }}
         >
           {bottleType}
@@ -167,26 +179,34 @@ export const BigLabel7 = ({
   batchDate,
   bottleType,
 }: LabelProps) => {
-  const [nameFontSize, setNameFontSize] = useState(18);
-  const [tagFontSize, setTagFontSize] = useState(23);
+  const [nameFontSize, setNameFontSize] = useState(20.24);
+  const [tagFontSize, setTagFontSize] = useState(30.36);
+  const [typeFontSize, setTypeFontSize] = useState(12.65);
 
   useEffect(() => {
-    if (bottleName.length >= 10) {
-      var t = 330 / (bottleName.length + 1);
+    if (bottleName.length >= 12) {
+      var t = 227.7 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
-      setNameFontSize(18);
+      setNameFontSize(20.24);
     }
   }, [bottleName]);
   useEffect(() => {
-    if (tagLine.length >= 10) {
-      var t = 330 / (tagLine.length + 1);
+    if (tagLine.length >= 7) {
+      var t = 278 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
-      setTagFontSize(23);
+      setTagFontSize(30.36);
     }
   }, [tagLine]);
-
+  useEffect(() => {
+    if (bottleType.length >= 25) {
+      var t = 329 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(12.65);
+    }
+  }, [bottleType]);
   return (
     <div
       className="label"
@@ -199,14 +219,14 @@ export const BigLabel7 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px 0px 2px 0px", maxWidth: "100%" }}
       />
       <div className="label-text" style={{ width: "380px", height: "380px" }}>
         <p
           style={{
             color: color,
-            fontSize: `23px`,
+            fontSize: tagFontSize,
             position: "relative",
 
             display: "flex",
@@ -222,7 +242,7 @@ export const BigLabel7 = ({
         <p
           style={{
             color: color,
-            fontSize: `18px`,
+            fontSize: nameFontSize,
             position: "relative",
 
             display: "flex",
@@ -269,7 +289,7 @@ export const BigLabel7 = ({
         </div>
         <p
           style={{
-            fontSize: `10px`,
+            fontSize: typeFontSize,
 
             position: "relative",
             fontFamily: "Bevan",
@@ -277,6 +297,10 @@ export const BigLabel7 = ({
             color: "#062452",
             textAlign: "center",
             height: "15px",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           {bottleType}

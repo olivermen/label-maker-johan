@@ -6,7 +6,6 @@ import enLocale from "i18n-iso-countries/langs/en.json";
 import itLocal from "i18n-iso-countries/langs/it.json";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import myStore from "../../../useStore";
 import { useNavigate } from "react-router-dom";
 // import stylesheets
 import "./reviewbox.scss";
@@ -69,7 +68,7 @@ var sendPDF: any;
 
 const ReviewBox: React.FC = () => {
   const { T } = useStore();
-  const G: any = myStore();
+  const G: any = useStore();
   const printRef = React.useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   countries.registerLocale(enLocale);
@@ -113,7 +112,16 @@ const ReviewBox: React.FC = () => {
     handleDownloadPdf();
     sendEmail();
 
-    navigate("/confirmation");
+    if (G.lang === "en-US") 
+    { 
+      navigate("/en/confirmation");
+    }
+    if (G.lang === "sw-SW") {
+      navigate("/sv/confirmation");
+    }
+    if (G.lang === "es-ES") {
+      navigate("/es/confirmation");
+    }
   };
 
   const replaceSpace = (str: string) => {
@@ -150,15 +158,11 @@ const ReviewBox: React.FC = () => {
         G && G.cl
       )}&volumn=${replaceSpace(G && G.vol)}&date=${replaceSpace(
         G && G.batchDate
-      )}&color=${replaceSpace(G && G.color)}`,
+      )}&color=${replaceSpace(G && G.color)}&size=${G.size}`,
     };
-    console.log(data);
     try {
       const result = await axios.post(`${appUrl}/send-email`, data);
-      console.log("result : " + result);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const handleDownloadPdf = async () => {
@@ -203,7 +207,7 @@ const ReviewBox: React.FC = () => {
   };
 
   return (
-    <div className="reviewbox" style={{ zIndex: "50" }}>
+    <div className="reviewbox">
       {contextHolder}
       <ToastContainer
         position="top-right"
@@ -219,180 +223,61 @@ const ReviewBox: React.FC = () => {
       />
       <div className="container">
         <div className="row">
-          <div
-            className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              textAlign: "left",
-            }}
-          >
-            <div
-              style={{
-                background: "#89898940",
-                padding: "5px 10px",
-                borderRadius: "5px",
-              }}
-            >
+          <div className="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-xs-12 review-row">
+            <div className="step-div">
               <Steps />
             </div>
             <h1 className="gradient-h1">
               {T("review.header")} # {G && G.orderid}
             </h1>
-            <span className="h2">
+            <h2>
               {T("review.header2")} <br />
               <br />
               {T("review.header3")}
-            </span>
-            <Row
-              style={{
-                marginTop: "30px",
-                display: "flex",
-                justifyContent: "left",
-                alignItems: "center",
-              }}
-            >
+            </h2>
+            <Row className="row-mt-30">
               <Col className="col-6">
-                <button
-                  style={{
-                    width: "100%",
-                    fontSize: "14px",
-                    fontWeight: "900",
-                    padding: "10px 10px",
-                    color: "white",
-                    backgroundColor: "#FEA150",
-                    border: "none",
-                    borderRadius: "50px",
-                  }}
-                  onClick={finish}
-                >
+                <button className="btn-review" onClick={finish}>
                   {T("review.finish")}
                 </button>
               </Col>
             </Row>
 
-            <div
-              style={{
-                backgroundColor: "#53535330",
-                padding: "10px 20px",
-                borderRadius: "5px",
-                marginTop: "20px",
-              }}
-              className="row"
-            >
-              <div
-                className="col-5"
-                style={{ display: "flex", flexDirection: "column" }}
-              >
-                <span
-                  className="h4"
-                  style={{ color: "#FEA150", marginTop: "15px" }}
-                >
-                  {T("review.orderid")}
-                </span>
-                <span
-                  className="h4"
-                  style={{ color: "#FEA150", marginTop: "5px" }}
-                >
-                  {T("review.orderstatus")}
-                </span>
-                <span
-                  className="h4"
-                  style={{ color: "#FEA150", marginTop: "5px" }}
-                >
-                  {T("review.created")}
-                </span>
-                <span
-                  className="h4"
-                  style={{ color: "#FEA150", marginTop: "5px" }}
-                >
-                  {T("review.name")}
-                </span>
-                <span
-                  className="h4"
-                  style={{ color: "#FEA150", marginTop: "5px" }}
-                >
-                  {T("review.email")}
-                </span>
-                <span
-                  className="h4"
-                  style={{ color: "#FEA150", marginTop: "5px" }}
-                >
-                  {T("review.shippingaddress")}
-                </span>
-                <span
-                  className="h4"
-                  style={{ color: "#FEA150", marginTop: "5px" }}
-                >
-                  {T("review.amountpaid")}
-                </span>
-                <span
-                  className="h4"
-                  style={{ color: "#FEA150", marginTop: "5px" }}
-                >
-                  {T("review.paymentmethod")}
-                </span>
-                <span
-                  className="h4"
-                  style={{ color: "#FEA150", marginTop: "5px" }}
-                >
-                  {T("review.dimensions")}
-                </span>
+            <div className="row recipe-paper">
+              <div className="col-5 left-paper">
+                <h3 className="recipe-text mt-10">{T("review.orderid")}</h3>
+                <h3 className="recipe-text">{T("review.orderstatus")}</h3>
+                <h3 className="recipe-text">{T("review.created")}</h3>
+                <h3 className="recipe-text">{T("review.name")}</h3>
+                <h3 className="recipe-text">{T("review.email")}</h3>
+                <h3 className="recipe-text">{T("review.shippingaddress")}</h3>
+                <h3 className="recipe-text">{T("review.amountpaid")}</h3>
+                {/* <h3 className="recipe-text">{T("review.paymentmethod")}</h3> */}
+                <h3 className="recipe-text">{T("review.dimensions")}</h3>
               </div>
 
-              <div
-                className="col-7"
-                style={{ display: "flex", flexDirection: "column" }}
-              >
-                <span className="h4" style={{ marginTop: "15px" }}>
-                  {G && G.orderid}
-                </span>
-                <span className="h4" style={{ marginTop: "5px" }}>
-                  {T("review.new")}
-                </span>
-                <span className="h4" style={{ marginTop: "5px" }}>
-                  {G && G.created}
-                </span>
-                <span className="h4" style={{ marginTop: "5px" }}>
+              <div className="col-7 right-paper">
+                <h3 className="recipe-right-text mt-10">{G && G.orderid}</h3>
+                <h3 className="recipe-right-text">{T("review.new")}</h3>
+                <h3 className="recipe-right-text">{G && G.created}</h3>
+                <h3 className="recipe-right-text">
                   {G && G.firstname} {G && G.lastname}
-                </span>
-                <span className="h4" style={{ marginTop: "5px" }}>
-                  {G && G.email}
-                </span>
-                <span className="h4" style={{ marginTop: "5px" }}>
+                </h3>
+                <h3 className="recipe-right-text">{G && G.email}</h3>
+                <h3 className="recipe-right-text">
                   {G && G.country} {G && G.state} {G && G.city}
-                </span>
-                <span className="h4" style={{ marginTop: "5px" }}>
-                  {G && G.price} $
-                </span>
-                <span className="h4" style={{ marginTop: "5px" }}>
-                  {G && G.payment}
-                </span>
-                <span className="h4" style={{ marginTop: "5px" }}>
+                </h3>
+                <h3 className="recipe-right-text">{G && G.paid} $</h3>
+                {/* <h3 className="recipe-right-text">{G && G.payment}</h3> */}
+                <h3 className="recipe-right-text">
                   {G.size === "small" ? "97.6 * 90mm" : "104mm * 100mm"}
-                </span>
+                </h3>
               </div>
             </div>
           </div>
 
-          <div
-            className="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-xs-12"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
-            <div
-              ref={printRef}
-              style={{
-                height: "380px",
-                width: "380px",
-                transform: "rotate(90deg)",
-                zIndex: "-200",
-              }}
-            >
+          <div className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12 review-right-div">
+            <div className="review-print" ref={printRef}>
               {G.curLabel === 0 ? (
                 <SBigLabel1
                   bottleName={G && G.bottleName}

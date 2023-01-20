@@ -4,6 +4,61 @@
   align-items: flex-end;
   .container {
     width: 100%;
+    .back-btn {
+      background: none;
+      border: none;
+      text-decoration: underline;
+    }
+    .order-div {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      .step-div {
+        background: #89898940;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+    }
+    .row-mt-20 {
+      margin-top: 20px;
+    }
+    .width-100 {
+      width: 100%;
+    }
+    .order-text {
+      display: flex;
+      align-items: center;
+      margin: 0 3px;
+    }
+    .order-comment {
+      color: #646464;
+      font-weight: 100;
+    }
+    .row-mt-50 {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .height-380 {
+      height: 380px;
+    }
+    .order-label-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .order-btn {
+      width: 100%;
+      font-size: 14px;
+      font-weight: 900;
+      padding: 10px 25px;
+      color: white;
+      background-color: #fea150;
+      border: none;
+      border-radius: 50px;
+    }
     .h1,
     h1 {
       font-size: 24px;
@@ -12,21 +67,19 @@
       width: 60%;
       line-height: 40px;
       color: black;
-      font-family: "Space Mono";
     }
     .h2,
     h2 {
       color: black;
       font-size: 15px;
       line-height: 21px;
-      font-weight: 800;
     }
     .h3,
     h3 {
       color: black;
       font-size: 14px;
       line-height: 21px;
-      font-weight: 400;
+      font-weight: 800;
       margin-right: 30px;
     }
     .h4,

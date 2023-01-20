@@ -17,7 +17,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./topmenubar.scss";
 
-import ContactUs from "../../pages/Contact";
 import useStore from "../../useStore";
 
 interface Props {
@@ -32,11 +31,13 @@ const drawerWidth = 300;
 
 const TopMenuBar = (props: Props) => {
   const { T } = useStore();
+  const G: any = useStore();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [contact, setContact] = React.useState(false);
 
   const [isVisible, setIsVisible] = React.useState(true);
+  const [lang, setLang] = React.useState<any>("/en");
   // React.useEffect(() => {
   //   window?.addEventListener("scroll", listenToScroll);
   //   return () => window?.removeEventListener("scroll", listenToScroll);
@@ -53,7 +54,11 @@ const TopMenuBar = (props: Props) => {
   //   }
   // };
   // const navigate = useNavigate();
-
+  React.useEffect(() => {
+    if(G.lang == "en-US") setLang("/en");
+    else if(G.lang == "sw-SW") setLang("/sv");
+    else setLang("/es");
+  }, []);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -63,6 +68,7 @@ const TopMenuBar = (props: Props) => {
       setContact(true);
     }
   };
+  
   const navItems = [
     T("menu.browse"),
     T("menu.about"),
@@ -73,7 +79,7 @@ const TopMenuBar = (props: Props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Link to="/edit">
+      <Link to={G.lang == "en-US" ? "en/edit" : G.lang == "sw-SW" ? "sw/edit" : "es/edit"}>
         <Typography variant="h6" sx={{ my: 5 }}>
           Label Maker
         </Typography>
@@ -85,16 +91,16 @@ const TopMenuBar = (props: Props) => {
             <Link
               to={
                 item === T("menu.browse")
-                  ? "/browse"
+                  ? lang + "/browse"
                   : item === T("menu.about")
-                  ? "/about"
+                  ? lang + "/about"
                   : item === T("menu.news")
-                  ? "/news"
+                  ? lang + "/news"
                   : item === T("menu.shipping")
-                  ? "/shippinginfo"
-                  : "/order"
+                  ? lang + "/shippinginfo"
+                  : lang + "/edit"
               }
-              style={{ textDecoration: "none", color: "#333" }}
+              className="link-menu"
             >
               <ListItemButton sx={{ textAlign: "center" }}>
                 <ListItemText primary={item} />
@@ -110,7 +116,6 @@ const TopMenuBar = (props: Props) => {
     window !== undefined ? () => window().document.body : undefined;
   return (
     <div className="top-menu">
-      {contact && <ContactUs />}
       <Box sx={{ display: "flex" }}>
         <AppBar
           component="nav"
@@ -140,7 +145,7 @@ const TopMenuBar = (props: Props) => {
                 display: { xs: "none", sm: "none", md: "none", lg: "block" },
               }}
             >
-              <Link to="/edit">
+              <Link to={lang + "/edit"}>
                 <svg
                   width="150"
                   height="15"
@@ -221,21 +226,20 @@ const TopMenuBar = (props: Props) => {
                     fontSize: "14px",
                     lineHeight: "21px",
                   }}
-                  onClick={() => onHandleClick(item)}
                 >
                   <Link
                     to={
                       item === T("menu.browse")
-                        ? "/browse"
+                        ? lang + "/browse"
                         : item === T("menu.about")
-                        ? "/about"
+                        ? lang + "/about"
                         : item === T("menu.news")
-                        ? "/news"
+                        ? lang + "/news"
                         : item === T("menu.shipping")
-                        ? "/shippinginfo"
-                        : "/order"
+                        ? lang + "/shippinginfo"
+                        : lang + "/edit"
                     }
-                    style={{ textDecoration: "none", color: "#333" }}
+                    className="link-menu"
                   >
                     {item}
                   </Link>

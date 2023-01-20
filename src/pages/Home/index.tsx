@@ -8,25 +8,23 @@ import "./home.scss";
 // import sub components
 import TopMenuBar from "../../components/TopMenuBar";
 import Editor from "./Editor";
-
-// import signin modal
-
-// interface HomeProps {
-//   status: String;
-// }
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   return (
-    <div className="home">
-      <React.Fragment>
-        <CssBaseline />
-        <Container maxWidth="xl">
-          <TopMenuBar />
-          <Editor />
-          {/* {status === "Sign In" ? <Login /> : ""} */}
-        </Container>
-      </React.Fragment>
-    </div>
+    <>
+      
+      <div className="home">
+        <React.Fragment>
+          <CssBaseline />
+          <Container maxWidth="xl">
+            <TopMenuBar />
+            <Editor />
+            {/* {status === "Sign In" ? <Login /> : ""} */}
+          </Container>
+        </React.Fragment>
+      </div>
+    </>
   );
 };
 

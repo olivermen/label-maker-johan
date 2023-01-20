@@ -28,6 +28,15 @@ const Label24 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(6);
+  const [typeFontSize, setTypeFontSize] = useState(4);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 40 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(4);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 8) {
@@ -57,7 +66,7 @@ const Label24 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -149,6 +158,11 @@ const Label24 = ({
                 color: color,
                 position: "relative",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "6px",
+                fontSize: typeFontSize,
               }}
             >
               {bottleType}
@@ -184,6 +198,15 @@ export const BigLabel24 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(37);
   const [tagFontSize, setTagFontSize] = useState(16);
+  const [typeFontSize, setTypeFontSize] = useState(10.1);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 101.2 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(10.1);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 8) {
@@ -214,7 +237,7 @@ export const BigLabel24 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -303,6 +326,12 @@ export const BigLabel24 = ({
                 color: color,
                 position: "relative",
                 textAlign: "center",
+
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "12px",
+                fontSize: typeFontSize,
               }}
             >
               {bottleType}

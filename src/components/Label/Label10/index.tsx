@@ -28,6 +28,16 @@ const Label10 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(8);
   const [tagFontSize, setTagFontSize] = useState(7);
+  const [typeFontSize, setTypeFontSize] = useState(4);
+
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 60 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(4);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 10) {
@@ -58,7 +68,7 @@ const Label10 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -146,11 +156,14 @@ const Label10 = ({
             <p
               style={{
                 color: "#201E31",
-                fontSize: "4px",
+                fontSize: typeFontSize,
                 marginTop: "1px",
                 position: "relative",
                 fontWeight: "200",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               {bottleType}
@@ -184,6 +197,15 @@ export const BigLabel10 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(21);
   const [tagFontSize, setTagFontSize] = useState(13);
+  const [typeFontSize, setTypeFontSize] = useState(10.1);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 152 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(10.1);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 10) {
@@ -215,7 +237,7 @@ export const BigLabel10 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -301,11 +323,15 @@ export const BigLabel10 = ({
             <p
               style={{
                 color: "#201E31",
-                fontSize: "11px",
+                fontSize: typeFontSize,
                 marginTop: "1px",
                 position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 fontWeight: "200",
                 textAlign: "center",
+                height: "12px",
               }}
             >
               {bottleType}

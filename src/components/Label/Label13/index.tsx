@@ -29,6 +29,15 @@ const Label13 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(15);
   const [tagFontSize, setTagFontSize] = useState(6);
+  const [typeFontSize, setTypeFontSize] = useState(5);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 80 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(5);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 6) {
@@ -59,7 +68,7 @@ const Label13 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px 0px 2px 2px", maxWidth: "100%" }}
       />
 
@@ -99,8 +108,11 @@ const Label13 = ({
         </p>
         <p
           style={{
-            fontSize: `5px`,
+            fontSize: typeFontSize,
             position: "relative",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             fontFamily: "Bevan",
             marginTop: "0px",
             color: "#BF6500",
@@ -171,10 +183,19 @@ export const BigLabel13 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(40);
   const [tagFontSize, setTagFontSize] = useState(15);
+  const [typeFontSize, setTypeFontSize] = useState(12.65);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 202 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(12.65);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 6) {
-      var t = 180 / (bottleName.length + 1);
+      var t = 202 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
       setNameFontSize(40);
@@ -182,7 +203,7 @@ export const BigLabel13 = ({
   }, [bottleName]);
   useEffect(() => {
     if (tagLine.length >= 10) {
-      var t = 180 / (tagLine.length + 1);
+      var t = 202 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
       setTagFontSize(15);
@@ -200,7 +221,7 @@ export const BigLabel13 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px 0px 2px 0px", maxWidth: "100%" }}
       />
       <div className="label-text" style={{ width: "380px", height: "380px" }}>
@@ -239,9 +260,12 @@ export const BigLabel13 = ({
         </p>
         <p
           style={{
-            fontSize: `13px`,
+            fontSize: typeFontSize,
             position: "relative",
             fontFamily: "Bevan",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             marginTop: "0px",
             color: "#BF6500",
             textAlign: "center",

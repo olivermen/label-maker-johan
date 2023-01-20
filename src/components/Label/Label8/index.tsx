@@ -45,6 +45,16 @@ const Label8 = ({
       setTagFontSize(8);
     }
   }, [tagLine]);
+
+  const [typeFontSize, setTypeFontSize] = useState(5);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 60 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(5);
+    }
+  }, [bottleType]);
   return (
     <div
       className="label"
@@ -57,7 +67,7 @@ const Label8 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -149,6 +159,10 @@ const Label8 = ({
                 color: "#B6804A",
                 position: "relative",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: typeFontSize,
               }}
             >
               {bottleType}
@@ -185,6 +199,15 @@ export const BigLabel8 = ({
   const [nameFontSize, setNameFontSize] = useState(35.4);
   const [tagFontSize, setTagFontSize] = useState(20);
 
+  const [typeFontSize, setTypeFontSize] = useState(12.65);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 151.8 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(12.65);
+    }
+  }, [bottleType]);
   useEffect(() => {
     if (bottleName.length >= 6) {
       var t = 330 / (bottleName.length + 1);
@@ -214,7 +237,7 @@ export const BigLabel8 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -307,6 +330,10 @@ export const BigLabel8 = ({
                 position: "relative",
                 fontWeight: "200",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: typeFontSize,
               }}
             >
               {bottleType}

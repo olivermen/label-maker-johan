@@ -28,6 +28,15 @@ const Label17 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(13);
+  const [typeFontSize, setTypeFontSize] = useState(5);
+  useEffect(() => {
+    if (bottleType.length >= 25) {
+      var t = 140 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(5);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 8) {
@@ -39,7 +48,7 @@ const Label17 = ({
   }, [bottleName]);
   useEffect(() => {
     if (tagLine.length >= 10) {
-      var t = 330 / (tagLine.length + 1);
+      var t = 140 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
       setTagFontSize(13);
@@ -57,7 +66,7 @@ const Label17 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "  100%" }}
       />
       <div
@@ -82,7 +91,7 @@ const Label17 = ({
         <p
           style={{
             color: "white",
-            fontSize: `6px`,
+            fontSize: tagFontSize,
             position: "relative",
 
             display: "flex",
@@ -129,11 +138,14 @@ const Label17 = ({
         <p
           style={{
             color: "white",
-            fontSize: "5px",
+            fontSize: typeFontSize,
             marginTop: "1px",
             position: "relative",
             textAlign: "center",
             height: "6px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           {bottleType}
@@ -165,11 +177,19 @@ export const BigLabel17 = ({
   bottleType,
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(37);
-  const [tagFontSize, setTagFontSize] = useState(13);
-
+  const [tagFontSize, setTagFontSize] = useState(32.9);
+  const [typeFontSize, setTypeFontSize] = useState(12.65);
+  useEffect(() => {
+    if (bottleType.length >= 25) {
+      var t = 354 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(12.65);
+    }
+  }, [bottleType]);
   useEffect(() => {
     if (bottleName.length >= 8) {
-      var t = 300 / (bottleName.length + 1);
+      var t = 303 / (bottleName.length + 1);
       setNameFontSize(t);
     } else {
       setNameFontSize(37);
@@ -177,10 +197,10 @@ export const BigLabel17 = ({
   }, [bottleName]);
   useEffect(() => {
     if (tagLine.length >= 8) {
-      var t = 330 / (tagLine.length + 1);
+      var t = 354 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
-      setTagFontSize(13);
+      setTagFontSize(32.9);
     }
   }, [tagLine]);
   return (
@@ -197,7 +217,7 @@ export const BigLabel17 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -222,7 +242,7 @@ export const BigLabel17 = ({
         <p
           style={{
             color: "white",
-            fontSize: `17px`,
+            fontSize: tagFontSize,
             position: "relative",
 
             display: "flex",
@@ -268,8 +288,11 @@ export const BigLabel17 = ({
         <p
           style={{
             color: "white",
-            fontSize: "12px",
+            fontSize: typeFontSize,
             marginTop: "3px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             position: "relative",
             textAlign: "center",
             height: "14px",

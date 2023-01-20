@@ -28,6 +28,15 @@ const Label30 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(6);
+  const [typeFontSize, setTypeFontSize] = useState(4);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 40 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(4);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 8) {
@@ -38,8 +47,8 @@ const Label30 = ({
     }
   }, [bottleName]);
   useEffect(() => {
-    if (tagLine.length >= 8) {
-      var t = 80 / (tagLine.length + 1);
+    if (tagLine.length >= 20) {
+      var t = 140 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
       setTagFontSize(6);
@@ -57,7 +66,7 @@ const Label30 = ({
         src={label}
         width={146}
         height={146}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -149,6 +158,12 @@ const Label30 = ({
                 color: color,
                 position: "relative",
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+
+                fontSize: typeFontSize,
+                height: "5px",
               }}
             >
               {bottleType}
@@ -184,6 +199,15 @@ export const BigLabel30 = ({
 }: LabelProps) => {
   const [nameFontSize, setNameFontSize] = useState(35);
   const [tagFontSize, setTagFontSize] = useState(15);
+  const [typeFontSize, setTypeFontSize] = useState(10.1);
+  useEffect(() => {
+    if (bottleType.length >= 10) {
+      var t = 101 / (bottleType.length + 1);
+      setTypeFontSize(t);
+    } else {
+      setTypeFontSize(10.1);
+    }
+  }, [bottleType]);
 
   useEffect(() => {
     if (bottleName.length >= 8) {
@@ -194,8 +218,8 @@ export const BigLabel30 = ({
     }
   }, [bottleName]);
   useEffect(() => {
-    if (tagLine.length >= 8) {
-      var t = 202 / (tagLine.length + 1);
+    if (tagLine.length >= 20) {
+      var t = 354 / (tagLine.length + 1);
       setTagFontSize(t);
     } else {
       setTagFontSize(15);
@@ -214,7 +238,7 @@ export const BigLabel30 = ({
         src={label}
         width={376}
         height={376}
-        alt="upload"
+        alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
       <div
@@ -307,6 +331,12 @@ export const BigLabel30 = ({
                 position: "relative",
                 fontWeight: "200",
                 textAlign: "center",
+
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: typeFontSize,
+                height: "12px",
               }}
             >
               {bottleType}
