@@ -25,4 +25,22 @@
     top: 0;
     left: 0;
   }
+  .label-image {
+    position: absolute;
+    z-index: 100;
+    clip-path: ellipse(35px 35px at 75px 45px);
+  }
+  .label-image1 {
+    position: absolute;
+    z-index: 100;
+    clip-path: ellipse(88.55px 88.55px at 189.75px 113.85px);
+  }
+  .noDrag {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
 }

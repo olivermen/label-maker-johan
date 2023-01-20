@@ -291,6 +291,17 @@ const Labels = () => {
           />
           <h2 className="label-number">13</h2>
         </Col>
+        
+        <Col className="browse-col">
+          <img
+            src="/labels/Label-14.svg"
+            width={150}
+            height={150}
+            alt="label"
+            onClick={() => handleImgClick(14)}
+          />
+          <h2 className="label-number">14</h2>
+        </Col>
         <Col className="browse-col">
           <img
             src="/labels/Label-15.svg"
@@ -345,7 +356,7 @@ const Labels = () => {
           />
           <h2 className="label-number">19</h2>
         </Col>
-        {/* <Col className="browse-col">
+        <Col className="browse-col">
           <img
             src="/labels/Label-20.svg"
             width={150}
@@ -354,7 +365,7 @@ const Labels = () => {
             onClick={() => handleImgClick(20)}
           />
           <h2 className="label-number">20</h2>
-        </Col> */}
+        </Col>
         <Col className="browse-col">
           <img
             src="/labels/Label-21.svg"
@@ -376,7 +387,7 @@ const Labels = () => {
           <h2 className="label-number">22</h2>
         </Col>
 
-        {/* <Col className="browse-col">
+        <Col className="browse-col">
           <img
             src="/labels/Label-23.svg"
             width={150}
@@ -385,7 +396,7 @@ const Labels = () => {
             onClick={() => handleImgClick(23)}
           />
           <h2 className="label-number">23</h2>
-        </Col> */}
+        </Col>
 
         <Col className="browse-col">
           <img

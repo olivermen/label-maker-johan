@@ -110,6 +110,7 @@ const appUrl = "https://stripe-server-johan-production.up.railway.app"; // proce
 
 export interface SimpleDialogProps {
   open: boolean;
+  file?: string;
   selectedValue: string;
   onClose: (value: string) => void;
 }
@@ -135,7 +136,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 1 ? (
           <BigLabel1
@@ -146,7 +147,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 2 ? (
           <BigLabel2
@@ -157,7 +158,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 3 ? (
           <BigLabel3
@@ -168,7 +169,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 4 ? (
           <BigLabel4
@@ -179,7 +180,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 5 ? (
           <BigLabel5
@@ -190,7 +191,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 6 ? (
           <BigLabel6
@@ -201,7 +202,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 7 ? (
           <BigLabel7
@@ -212,7 +213,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 8 ? (
           <BigLabel8
@@ -234,7 +235,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 10 ? (
           <BigLabel10
@@ -245,7 +246,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 11 ? (
           <BigLabel11
@@ -256,7 +257,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 12 ? (
           <BigLabel12
@@ -267,7 +268,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 13 ? (
           <BigLabel13
@@ -278,7 +279,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 14 ? (
           <BigLabel14
@@ -289,7 +290,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 15 ? (
           <BigLabel15
@@ -300,7 +301,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 16 ? (
           <BigLabel16
@@ -311,7 +312,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 17 ? (
           <BigLabel17
@@ -322,7 +323,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 18 ? (
           <BigLabel18
@@ -333,7 +334,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 19 ? (
           <BigLabel19
@@ -344,7 +345,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 20 ? (
           <BigLabel20
@@ -355,7 +356,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 21 ? (
           <BigLabel21
@@ -366,7 +367,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 22 ? (
           <BigLabel22
@@ -377,7 +378,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 23 ? (
           <BigLabel23
@@ -388,7 +389,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 24 ? (
           <BigLabel24
@@ -399,7 +400,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 25 ? (
           <BigLabel25
@@ -410,7 +411,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 26 ? (
           <BigLabel26
@@ -421,7 +422,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 27 ? (
           <BigLabel27
@@ -432,7 +433,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 28 ? (
           <BigLabel28
@@ -443,7 +444,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : G.curLabel === 29 ? (
           <BigLabel29
@@ -454,7 +455,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
           />
         ) : (
           <BigLabel30
@@ -465,7 +466,8 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            // file={file}
+            file={props.file}
+
           />
         )}
       </div>
@@ -510,7 +512,7 @@ const Editor = () => {
   const [rate, setRate] = useState(0.2);
   const [price, setPrice]: any = useState(100.0);
 
-  const blackLabels = [14, 20, 23];
+  const blackLabels = [35]; //14, 20, 23
 
   useEffect(() => {
     setColor(G && G.color);
@@ -725,6 +727,7 @@ const Editor = () => {
       <SimpleDialog
         selectedValue={selectedValue}
         open={open}
+        file={file}
         onClose={handleClose}
       />
       <div className="container">
@@ -887,7 +890,7 @@ const Editor = () => {
                       color={color}
                       batchDate={batchDate}
                       bottleType={bottleType}
-                      // file={file}
+                      file={file}
                     />
                   ) : G.curLabel === 1 ? (
                     <Label1
@@ -898,7 +901,7 @@ const Editor = () => {
                       color={color}
                       batchDate={batchDate}
                       bottleType={bottleType}
-                      // file={file}
+                      file={file}
                     />
                   ) : G.curLabel === 2 ? (
                     <Label2
@@ -909,7 +912,7 @@ const Editor = () => {
                       color={color}
                       batchDate={batchDate}
                       bottleType={bottleType}
-                      // file={file}
+                      file={file}
                     />
                   ) : G.curLabel === 3 ? (
                     <Label3
@@ -1223,7 +1226,7 @@ const Editor = () => {
                 </div>
                 <div className="overlay"></div>
               </div>
-              {G.curLabel === 31 && (
+              {(G.curLabel === 14 || G.curLabel === 20 || G.curLabel === 23) && (
                 <Button
                   variant="contained"
                   component="label"

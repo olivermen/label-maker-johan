@@ -64,6 +64,12 @@ const Label14 = ({
         className="label-text"
         style={{ width: "150px", height: "150px", fontFamily: "Bevan" }}
       >
+        <img
+          src={file}
+          alt="upload image"
+          style={{ margin: "2px auto", maxWidth: "100%" }}
+          className="label-image"
+        />
         <p
           style={{
             color: color,
@@ -73,7 +79,7 @@ const Label14 = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "90px",
+            marginTop: "95px",
             height: "15px",
           }}
         >
@@ -102,7 +108,7 @@ const Label14 = ({
             alignItems: "center",
             justifyContent: "center",
             fontFamily: "Bevan",
-            marginTop: "10px",
+            marginTop: "4px",
           }}
         >
           <p
@@ -204,6 +210,12 @@ export const BigLabel14 = ({
         className="label-text"
         style={{ width: "380px", height: "380px", fontFamily: "Bevan" }}
       >
+        <img
+          src={file}
+          alt="upload image"
+          className="label-image1"
+          style={{ margin: "2px auto", maxWidth: "100%" }}
+        />
         <p
           style={{
             color: color,
@@ -213,7 +225,7 @@ export const BigLabel14 = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "220px",
+            marginTop: "240px",
             height: "39px",
           }}
         >
@@ -242,7 +254,7 @@ export const BigLabel14 = ({
             alignItems: "center",
             justifyContent: "center",
             fontFamily: "Bevan",
-            marginTop: "23px",
+            marginTop: "10px",
             fontSize: "12px",
           }}
         >
