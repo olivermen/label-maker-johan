@@ -110,18 +110,18 @@ const ReviewBox: React.FC = () => {
 
   const finish = () => {
     handleDownloadPdf();
-    sendEmail();
+    // sendEmail();
 
-    if (G.lang === "en-US") 
-    { 
-      navigate("/en/confirmation");
-    }
-    if (G.lang === "sw-SW") {
-      navigate("/sv/confirmation");
-    }
-    if (G.lang === "es-ES") {
-      navigate("/es/confirmation");
-    }
+    // if (G.lang === "en-US") 
+    // { 
+    //   navigate("/en/confirmation");
+    // }
+    // if (G.lang === "sw-SW") {
+    //   navigate("/sv/confirmation");
+    // }
+    // if (G.lang === "es-ES") {
+    //   navigate("/es/confirmation");
+    // }
   };
 
   const replaceSpace = (str: string) => {
@@ -180,31 +180,42 @@ const ReviewBox: React.FC = () => {
     const pdfWidth = pdf.internal.pageSize.getWidth();
     // const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
     const pdfHeight = pdf.internal.pageSize.getHeight();
-    if (G.curLabel !== 8) {
+    if (G.curLabel !== 14) {
       html2canvas(element, {
         scale: 5,
+        allowTaint: false,
+        useCORS: true,
       }).then(function (canvas) {
-        var data = canvas.toDataURL();
+        var data = canvas.toDataURL("image/png");
 
-        pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
-        pdf.save("label.pdf");
+        // pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
+        // pdf.save("label.pdf");
+        downloadURI("data:" + data, "yourImage.png");
+
       });
     } else {
       domtoimage
-        .toJpeg(element)
-        .then(function (dataUrl) {
+        .toPng(element)
+        .then(dataUrl => {
           // pdf.addImage(dataUrl, "PNG", 0, 0, pdfWidth, pdfHeight);
           pdf.addImage(dataUrl, "PNG", 0, 0, 100, 100);
           var img = new Image();
           img.src = dataUrl;
           document.body.appendChild(img);
-          pdf.save("label.pdf");
+          // pdf.save("label.pdf");
         })
         .catch(function (error) {
           console.error("oops, something went wrong!", error);
         });
     }
   };
+  const downloadURI = (uri :any, name:any) => {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    link.click();
+
+  }
 
   return (
     <div className="reviewbox">

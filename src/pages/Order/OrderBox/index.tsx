@@ -318,7 +318,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 1 ? (
                 <BigLabel1
@@ -329,7 +329,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 2 ? (
                 <BigLabel2
@@ -340,7 +340,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 3 ? (
                 <BigLabel3
@@ -351,7 +351,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 4 ? (
                 <BigLabel4
@@ -362,7 +362,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 5 ? (
                 <BigLabel5
@@ -373,7 +373,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 6 ? (
                 <BigLabel6
@@ -384,7 +384,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 7 ? (
                 <BigLabel7
@@ -395,7 +395,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 8 ? (
                 <BigLabel8
@@ -417,7 +417,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 10 ? (
                 <BigLabel10
@@ -428,7 +428,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 11 ? (
                 <BigLabel11
@@ -439,7 +439,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 12 ? (
                 <BigLabel12
@@ -450,7 +450,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 13 ? (
                 <BigLabel13
@@ -461,7 +461,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 14 ? (
                 <BigLabel14
@@ -472,7 +472,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 15 ? (
                 <BigLabel15
@@ -483,7 +483,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 16 ? (
                 <BigLabel16
@@ -494,7 +494,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 17 ? (
                 <BigLabel17
@@ -505,7 +505,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 18 ? (
                 <BigLabel18
@@ -516,7 +516,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 19 ? (
                 <BigLabel19
@@ -527,7 +527,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 20 ? (
                 <BigLabel20
@@ -538,7 +538,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 21 ? (
                 <BigLabel21
@@ -549,7 +549,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 22 ? (
                 <BigLabel22
@@ -560,7 +560,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 23 ? (
                 <BigLabel23
@@ -571,7 +571,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 24 ? (
                 <BigLabel24
@@ -582,7 +582,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 25 ? (
                 <BigLabel25
@@ -593,7 +593,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 26 ? (
                 <BigLabel26
@@ -604,7 +604,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 27 ? (
                 <BigLabel27
@@ -615,7 +615,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 28 ? (
                 <BigLabel28
@@ -626,7 +626,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : G.curLabel === 29 ? (
                 <BigLabel29
@@ -637,7 +637,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               ) : (
                 <BigLabel30
@@ -648,7 +648,7 @@ const OrderBox: React.FC = () => {
                   color={G && G.color}
                   batchDate={G && G.batchDate}
                   bottleType={G && G.bottleType}
-                  // file={file}
+                  file={G && G.file}
                 />
               )}
             </div>
