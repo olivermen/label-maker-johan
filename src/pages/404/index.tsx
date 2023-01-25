@@ -10,7 +10,6 @@ import "./404.scss";
 // import sub components
 import TopMenuBar from "../../components/TopMenuBar";
 
-import img1 from "../../assets/main/about-1.png";
 import useStore from "../../useStore";
 
 import { Helmet } from "react-helmet";
@@ -20,15 +19,10 @@ const Error404 = () => {
   return (
     <>
       <Helmet>
-      <title>
-          {T("title.404")}
-        </title>
+        <title>{T("title.404")}</title>
         <meta name="title" content={T("title.404")} />
 
-        <meta
-          name="keywords"
-          content={T("keyword.common")}
-        />
+        <meta name="keywords" content={T("keyword.common")} />
       </Helmet>
       <div>
         <React.Fragment>

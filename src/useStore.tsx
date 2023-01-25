@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from "react-redux";
 
-// import img from "./assets/images/img1.webp";
 const locales = {
   "en-US": require("./locales/en-US.json"),
   "es-ES": require("./locales/es-ES.json"),

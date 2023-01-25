@@ -97,7 +97,7 @@ const Label18 = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "5px",
+            marginTop: "3px",
             fontWeight: "200",
             height: "7px",
           }}
@@ -250,7 +250,7 @@ export const BigLabel18 = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "9px",
+            marginTop: "6px",
             fontWeight: "200",
             height: "18px",
           }}

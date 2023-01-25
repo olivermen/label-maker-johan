@@ -11,7 +11,7 @@ import "./shippinginfo.scss";
 import TopMenuBar from "../../components/TopMenuBar";
 import useStore from "../../useStore";
 
-import img1 from "../../assets/main/shipping.png";
+import img1 from "../../assets/main/shipping.svg";
 import { Helmet } from "react-helmet";
 
 const ShippingInfo = () => {
@@ -19,19 +19,10 @@ const ShippingInfo = () => {
   return (
     <>
       <Helmet>
-        
-      <title>
-          {T("title.shippinginfo")}
-        </title>
+        <title>{T("title.shippinginfo")}</title>
         <meta name="title" content={T("title.shippinginfo")} />
-        <meta
-          name="description"
-          content={T("description.shippinginfo")}
-        />
-        <meta
-          name="keywords"
-          content={T("keyword.common")}
-        />
+        <meta name="description" content={T("description.shippinginfo")} />
+        <meta name="keywords" content={T("keyword.common")} />
       </Helmet>
 
       <div>

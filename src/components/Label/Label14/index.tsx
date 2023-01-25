@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import "./label14.scss";
 
 import label from "../../../assets/labels/Label-14.svg";
+import Draggable from "react-draggable";
+// import images
+import myStore from "../../../useStore";
 
 interface LabelProps {
   bottleName: string;
@@ -29,6 +32,9 @@ const Label14 = ({
   const [nameFontSize, setNameFontSize] = useState(14);
   const [tagFontSize, setTagFontSize] = useState(6);
 
+  const { T, update }: any = myStore();
+  const G: any = myStore();
+
   useEffect(() => {
     if (bottleName.length >= 10) {
       var t = 130 / (bottleName.length + 1);
@@ -45,6 +51,11 @@ const Label14 = ({
       setTagFontSize(6);
     }
   }, [tagLine]);
+
+  const handleStop = (e: any, data: any) => {
+    console.log(data.lastX, data.lastY);
+    update({ curImageX: data.lastX, curImageY: data.lastY });
+  };
   return (
     <div
       className="label"
@@ -60,16 +71,27 @@ const Label14 = ({
         alt="upload image"
         style={{ margin: "2px auto", maxWidth: "100%" }}
       />
+      <div className="label-image">
+        <Draggable
+          defaultPosition={{ x: G.curImageX, y: G.curImageY }}
+          onStop={handleStop}
+        >
+          <div>
+            <img
+              src={file}
+              alt="upload image"
+              className="noDrag"
+              width={146}
+              height={146}
+              style={{ position: "absolute" }}
+            />
+          </div>
+        </Draggable>
+      </div>
       <div
         className="label-text"
         style={{ width: "150px", height: "150px", fontFamily: "Bevan" }}
       >
-        <img
-          src={file}
-          alt="upload image"
-          style={{ margin: "2px auto", maxWidth: "100%" }}
-          className="label-image"
-        />
         <p
           style={{
             color: color,
@@ -173,6 +195,9 @@ export const BigLabel14 = ({
   const [nameFontSize, setNameFontSize] = useState(37);
   const [tagFontSize, setTagFontSize] = useState(17);
 
+  const { T, update }: any = myStore();
+  const G: any = myStore();
+
   useEffect(() => {
     if (bottleName.length >= 10) {
       var t = 330 / (bottleName.length + 1);
@@ -189,6 +214,12 @@ export const BigLabel14 = ({
       setTagFontSize(17);
     }
   }, [tagLine]);
+
+  const handleStop = (e: any, data: any) => {
+    console.log(data.lastX, data.lastY);
+    update({ curImageX: data.lastX, curImageY: data.lastY });
+  };
+
   return (
     <div
       className="label"
@@ -210,12 +241,24 @@ export const BigLabel14 = ({
         className="label-text"
         style={{ width: "380px", height: "380px", fontFamily: "Bevan" }}
       >
-        <img
-          src={file}
-          alt="upload image"
-          className="label-image1"
-          style={{ margin: "2px auto", maxWidth: "100%" }}
-        />
+        <div className="label-image1">
+          <Draggable
+            defaultPosition={{ x: G.curImageX * 2.53, y: G.curImageY * 2.53 }}
+            onStop={handleStop}
+            disabled
+          >
+            <div>
+              <img
+                src={file}
+                alt="upload image"
+                className="noDrag"
+                width={376}
+                height={376}
+                style={{ position: "absolute" }}
+              />
+            </div>
+          </Draggable>
+        </div>
         <p
           style={{
             color: color,

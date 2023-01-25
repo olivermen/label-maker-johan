@@ -4,7 +4,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-import img from "../../assets/main/contact.png";
+import img from "../../assets/main/contact.svg";
 import useStore from "../../useStore";
 
 export default function ContactUs() {

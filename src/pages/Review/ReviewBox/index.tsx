@@ -112,8 +112,8 @@ const ReviewBox: React.FC = () => {
     handleDownloadPdf();
     // sendEmail();
 
-    // if (G.lang === "en-US") 
-    // { 
+    // if (G.lang === "en-US")
+    // {
     //   navigate("/en/confirmation");
     // }
     // if (G.lang === "sw-SW") {
@@ -188,34 +188,40 @@ const ReviewBox: React.FC = () => {
       }).then(function (canvas) {
         var data = canvas.toDataURL("image/png");
 
-        // pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
-        // pdf.save("label.pdf");
-        downloadURI("data:" + data, "yourImage.png");
-
+        pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
+        pdf.save(`${G.orderid}.pdf`);
+        // downloadURI("data:" + data, "yourImage.png");
       });
     } else {
+      var scale = 2;
       domtoimage
-        .toPng(element)
-        .then(dataUrl => {
-          // pdf.addImage(dataUrl, "PNG", 0, 0, pdfWidth, pdfHeight);
-          pdf.addImage(dataUrl, "PNG", 0, 0, 100, 100);
+        .toPng(element, {
+          width: element.clientWidth * scale,
+          height: element.clientHeight * scale,
+          style: {
+            transform: "scale(" + scale + ")",
+            transformOrigin: "top left",
+          },
+        })
+        .then((dataUrl) => {
+          pdf.addImage(dataUrl, "PNG", 0, 0, pdfWidth, pdfHeight);
+          // pdf.addImage(dataUrl, "PNG", 0, 0, 100, 100);
           var img = new Image();
           img.src = dataUrl;
-          document.body.appendChild(img);
-          // pdf.save("label.pdf");
+          // document.body.appendChild(img);
+          pdf.save("label.pdf");
         })
         .catch(function (error) {
           console.error("oops, something went wrong!", error);
         });
     }
   };
-  const downloadURI = (uri :any, name:any) => {
+  const downloadURI = (uri: any, name: any) => {
     var link = document.createElement("a");
     link.download = name;
     link.href = uri;
     link.click();
-
-  }
+  };
 
   return (
     <div className="reviewbox">
