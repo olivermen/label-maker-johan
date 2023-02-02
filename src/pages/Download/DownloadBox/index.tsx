@@ -58,7 +58,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FormData from "form-data";
 
-const appUrl = "https://stripe-server-johan-production.up.railway.app"; // process.env.REACT_APP_API_URL || "";
+const appUrl = "https://www.fixalabel.com/label-server"; //"https://stripe-server-johan-production.up.railway.app"; // process.env.REACT_APP_API_URL || ""; "http://localhost:8080";
 declare module "react-stripe-checkout" {
   interface StripeCheckoutProps {
     children?: React.ReactNode;
@@ -85,7 +85,9 @@ const DownloadBox: React.FC = () => {
   const [date, setDate] = useState<any>("");
   const [color, setColor] = useState<any>("");
   const [cur, setCur] = useState<any>(1);
-  const [size, setSize] = useState<any>('small');
+  const [size, setSize] = useState<any>("small");
+  const [file, setFile] = useState<any>();
+  const [orderid, setOderid] = useState<any>();
 
   const success = () => {
     messageApi.open({
@@ -120,6 +122,8 @@ const DownloadBox: React.FC = () => {
     const date_param = queryParameters.get("date");
     const color_param = queryParameters.get("color");
     const size_param = queryParameters.get("size");
+    const file_param = queryParameters.get("file");
+    const orderid_param = queryParameters.get("orderid");
     setCur(cur_param);
     setBottleName(name_param);
     setBottleType(type_param);
@@ -129,6 +133,8 @@ const DownloadBox: React.FC = () => {
     setDate(date_param);
     setSize(size_param);
     setColor("#" + color_param);
+    setFile(file_param);
+    setOderid(orderid_param);
     setTimeout(() => {
       finish();
     }, 3000);
@@ -166,21 +172,29 @@ const DownloadBox: React.FC = () => {
         // });
         // setPdfToSend(blobPDF);
 
-        pdf.save("label.pdf");
+        pdf.save(`${orderid}.pdf`);
         setTimeout(() => {
           window.close();
         }, 3000);
       });
     } else {
+      var scale = 2;
       domtoimage
-        .toJpeg(element)
-        .then(function (dataUrl) {
-          // pdf.addImage(dataUrl, "PNG", 0, 0, pdfWidth, pdfHeight);
-          pdf.addImage(dataUrl, "PNG", 0, 0, 100, 100);
+        .toPng(element, {
+          width: element.clientWidth * scale,
+          height: element.clientHeight * scale,
+          style: {
+            transform: "scale(" + scale + ")",
+            transformOrigin: "top left",
+          },
+        })
+        .then((dataUrl) => {
+          pdf.addImage(dataUrl, "PNG", 0, 0, pdfWidth, pdfHeight);
+          // pdf.addImage(dataUrl, "PNG", 0, 0, 100, 100);
           var img = new Image();
           img.src = dataUrl;
-          document.body.appendChild(img);
-          pdf.save("label.pdf");
+          // document.body.appendChild(img);
+          pdf.save(`${orderid}.pdf`);
         })
         .catch(function (error) {
           console.error("oops, something went wrong!", error);
@@ -216,7 +230,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 1 ? (
                 <BigLabel1
@@ -227,7 +241,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 2 ? (
                 <BigLabel2
@@ -238,7 +252,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 3 ? (
                 <BigLabel3
@@ -249,7 +263,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 4 ? (
                 <BigLabel4
@@ -260,7 +274,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 5 ? (
                 <BigLabel5
@@ -271,7 +285,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 6 ? (
                 <BigLabel6
@@ -282,7 +296,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 7 ? (
                 <BigLabel7
@@ -293,7 +307,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 8 ? (
                 <BigLabel8
@@ -315,7 +329,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 10 ? (
                 <BigLabel10
@@ -326,7 +340,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 11 ? (
                 <BigLabel11
@@ -337,7 +351,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 12 ? (
                 <BigLabel12
@@ -348,7 +362,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 13 ? (
                 <BigLabel13
@@ -359,7 +373,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 14 ? (
                 <BigLabel14
@@ -370,7 +384,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 15 ? (
                 <BigLabel15
@@ -381,7 +395,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 16 ? (
                 <BigLabel16
@@ -392,7 +406,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 17 ? (
                 <BigLabel17
@@ -403,7 +417,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 18 ? (
                 <BigLabel18
@@ -414,7 +428,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 19 ? (
                 <BigLabel19
@@ -425,7 +439,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 20 ? (
                 <BigLabel20
@@ -436,7 +450,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 21 ? (
                 <BigLabel21
@@ -447,7 +461,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 22 ? (
                 <BigLabel22
@@ -458,7 +472,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 23 ? (
                 <BigLabel23
@@ -469,7 +483,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 24 ? (
                 <BigLabel24
@@ -480,7 +494,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 25 ? (
                 <BigLabel25
@@ -491,7 +505,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 26 ? (
                 <BigLabel26
@@ -502,7 +516,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 27 ? (
                 <BigLabel27
@@ -513,7 +527,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 28 ? (
                 <BigLabel28
@@ -524,7 +538,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : cur === 29 ? (
                 <BigLabel29
@@ -535,7 +549,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               ) : (
                 <BigLabel30
@@ -546,7 +560,7 @@ const DownloadBox: React.FC = () => {
                   color={color}
                   batchDate={date}
                   bottleType={bottleType}
-                  // file={file}
+                  file={file}
                 />
               )}
             </div>

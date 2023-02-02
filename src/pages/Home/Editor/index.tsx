@@ -104,7 +104,7 @@ import axios from "axios";
 
 import { Helmet } from "react-helmet";
 
-const appUrl = "https://stripe-server-johan-production.up.railway.app"; // process.env.REACT_APP_API_URL || ""; "http://localhost:8080";
+const appUrl = "https://www.fixalabel.com/label-server"; //"https://stripe-server-johan-production.up.railway.app"; // process.env.REACT_APP_API_URL || ""; "http://localhost:8080";
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -221,7 +221,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             color={G && G.color}
             batchDate={G && G.batchDate}
             bottleType={G && G.bottleType}
-            file={G && G.file}
+            file={props.file}
           />
         ) : G.curLabel === 9 ? (
           <BigLabel9
@@ -485,7 +485,7 @@ const Editor = () => {
   const [tagLine, setTagLine] = useState("");
   const [batchDate, setBatchDate] = useState<string>("2022-12-12");
   const printRef = React.useRef<HTMLDivElement>(null);
-  const [file, setFile] = useState(Img);
+  const [file, setFile] = useState<any>();
   const [popularColors, setPopularColors] = useState([
     "#f44336",
     "#e91e63",
@@ -651,8 +651,19 @@ const Editor = () => {
 
   const handleChange = (e: any) => {
     const imageUrl: any = URL.createObjectURL(e.target.files[0]);
-    setFile(imageUrl);
-    update({ file: imageUrl, curImageX: 0, curImageY: 0 });
+    const file = e.target.files[0];
+
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      // console.log(reader.result);
+      update({ file: reader.result, curImageX: 0, curImageY: 0 });
+      setFile(reader.result);
+    };
+
+    reader.onerror = function () {
+      // console.log(reader.error);
+    };
   };
 
   const toOrderPage = () => {

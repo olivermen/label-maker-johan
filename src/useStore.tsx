@@ -97,6 +97,7 @@ declare interface StoreObject {
   // images
   curImageX: number;
   curImageY: number;
+  zoom: number;
 }
 const appKey = "myProject-v.1.10";
 
@@ -176,6 +177,7 @@ const initialState: StoreObject = {
   // images
   curImageX: 0,
   curImageY: 0,
+  zoom: 1,
 };
 
 export const slice = createSlice({

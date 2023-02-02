@@ -1,5 +1,26 @@
 @import "../../../index.scss";
 
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/lato/v23/S6uyw4BMUTPHjxAwXjeu.woff2)
+    format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/lato/v23/S6uyw4BMUTPHjx4wXg.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
 .label {
   display: flex;
   flex-direction: column;
@@ -24,5 +45,23 @@
     color: #ffffff;
     top: 0;
     left: 0;
+  }
+  .label-image20 {
+    position: absolute;
+    z-index: 100;
+    clip-path: ellipse(28px 34px at 76px 48px);
+  }
+  .label-image120 {
+    position: absolute;
+    z-index: 100;
+    clip-path: ellipse(70.84px 86.02px at 190.6px 118.44px);
+  }
+  .noDrag {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
   }
 }

@@ -61,7 +61,7 @@ import { setEnvironmentData } from "worker_threads";
 import { Helmet } from "react-helmet";
 
 // import images
-const appUrl = "https://stripe-server-johan-production.up.railway.app"; // process.env.REACT_APP_API_URL || ""; ;
+const appUrl = "https://www.fixalabel.com/label-server"; //"https://stripe-server-johan-production.up.railway.app"; // process.env.REACT_APP_API_URL || ""; "http://localhost:8080";
 
 declare module "react-stripe-checkout" {
   interface StripeCheckoutProps {
@@ -110,8 +110,7 @@ const PayBox: React.FC = () => {
       if (result.data.status) {
         var now = new Date();
         update({ orderid: paymentId, created: now.toLocaleString() });
-        if (G.lang === "en-US") 
-        { 
+        if (G.lang === "en-US") {
           navigate("/en/review");
         }
         if (G.lang === "sw-SW") {
@@ -133,9 +132,9 @@ const PayBox: React.FC = () => {
     getTaxRates(G.country_code);
 
     if (G.lang == "sw-SW") setCurrency("kr");
-    
-    if(G.lang == "en-US") setLang("/en");
-    else if(G.lang == "sw-SW") setLang("/sv");
+
+    if (G.lang == "en-US") setLang("/en");
+    else if (G.lang == "sw-SW") setLang("/sv");
     else setLang("/es");
   }, []);
   useEffect(() => {
@@ -149,7 +148,10 @@ const PayBox: React.FC = () => {
     };
     try {
       const result = await axios.post(`${appUrl}/taxrates`, { data });
+
       if (result.data) {
+        console.log(data);
+        console.log(result.data);
         setRate(result.data.rate);
 
         const p = Number(G.price * 100 + G.price * 100 * result.data.rate);
@@ -179,69 +181,60 @@ const PayBox: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>
-          {T("title.browse")}
-        </title>
+        <title>{T("title.browse")}</title>
         <meta name="title" content={T("title.browse")} />
-        <meta
-          name="description"
-          content={T("description.browse")}
-        />
-        <meta
-          name="keywords"
-          content={T("keyword.common")}
-        />
+        <meta name="description" content={T("description.browse")} />
+        <meta name="keywords" content={T("keyword.common")} />
       </Helmet>
-    <div className="paybox">
-      {contextHolder}
+      <div className="paybox">
+        {contextHolder}
 
-      <div className="container">
-        <div className="row">
-          <div className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12 pay-div">
-            <div className="step-div">
-              <Steps />
-            </div>
-            <h1 className="gradient-h1">{T("payment.header")}</h1>
-            <div className="recipe-div">
-              <div className="paper-div">
-                <h2>
-                  {G.count} {T("payment.frontlabels")}
-                </h2>
-                <h2>
-                  {paperPrice1} {currency}
-                </h2>
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12 pay-div">
+              <div className="step-div">
+                <Steps />
               </div>
+              <h1 className="gradient-h1">{T("payment.header")}</h1>
+              <div className="recipe-div">
+                <div className="paper-div">
+                  <h2>
+                    {G.count} {T("payment.frontlabels")}
+                  </h2>
+                  <h2>
+                    {paperPrice1} {currency}
+                  </h2>
+                </div>
 
-              <div className="paper-div">
-                <h2>{T("payment.worldwideshipping")}</h2>
-                <h2>{T("payment.free")}</h2>
-              </div>
+                <div className="paper-div">
+                  <h2>{T("payment.worldwideshipping")}</h2>
+                  <h2>{T("payment.free")}</h2>
+                </div>
 
-              <div className="paper-div">
-                <h2>{T("payment.tax")}</h2>
-                <h2>
-                  {paperPrice2} {currency}
-                </h2>
+                <div className="paper-div">
+                  <h2>{T("payment.tax")}</h2>
+                  <h2>
+                    {paperPrice2} {currency}
+                  </h2>
+                </div>
+                <div className="paybox-div">
+                  <h2>{T("payment.total")}</h2>
+                  <h2>
+                    {paperPrice3} {currency}
+                  </h2>
+                </div>
               </div>
-              <div className="paybox-div">
-                <h2>{T("payment.total")}</h2>
-                <h2>
-                  {paperPrice3} {currency}
-                </h2>
-              </div>
-            </div>
-            <Row className="row-mt-20">
-              
-              {/* <Col className="col-4">
+              <Row className="row-mt-20">
+                {/* <Col className="col-4">
                 <img src={Paypal} width={100} height={100} alt="Paypal"></img>
               </Col>
 
               <Col className="col-4">
                 <img src={Crypto} width={100} height={100} alt="Crypto"></img>
               </Col> */}
-            </Row>
-            <Row className="row-mt-50">
-              {/* <Col className="col-4">
+              </Row>
+              <Row className="row-mt-50">
+                {/* <Col className="col-4">
                 
                 <StripeCheckout
                   stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY || ""}
@@ -258,376 +251,378 @@ const PayBox: React.FC = () => {
                 </StripeCheckout>
               </Col> */}
 
-              <Col className="col-4">
-                <form
-                  action={`${appUrl}/klarna_checkout?currency=${
-                    currency == "kr" ? "SEK" : "EUR"
-                  }&price=${price * (currency == "kr" ? 10 : 1)}&lang=${lang.replace('/','')}&orderid=${paymentId}`}
-                  method="POST"
-                >
-                  <button className="pay-btn">{T("payment.paywith")}</button>
-                </form>
-              </Col>
-              <Col className="col-4">
-                or
-                <Link to={lang + "/shipping"} className="back-link">
-                  {" "}
-                  {T("order.back")}{" "}
-                </Link>
-              </Col>
-              <Col className="col-4"></Col>
-            </Row>
-          </div>
+                <Col className="col-4">
+                  <form
+                    action={`${appUrl}/klarna_checkout?currency=${
+                      currency == "kr" ? "SEK" : "EUR"
+                    }&price=${
+                      price * (currency == "kr" ? 10 : 1)
+                    }&lang=${lang.replace("/", "")}&orderid=${paymentId}`}
+                    method="POST"
+                  >
+                    <button className="pay-btn">{T("payment.paywith")}</button>
+                  </form>
+                </Col>
+                <Col className="col-4">
+                  or
+                  <Link to={lang + "/shipping"} className="back-link">
+                    {" "}
+                    {T("order.back")}{" "}
+                  </Link>
+                </Col>
+                <Col className="col-4"></Col>
+              </Row>
+            </div>
 
-          <div className="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-xs-12 pay-bottle-div">
-            <div className="height-380">
-              {G.curLabel === 0 ? (
-                <SBigLabel1
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 1 ? (
-                <BigLabel1
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 2 ? (
-                <BigLabel2
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 3 ? (
-                <BigLabel3
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 4 ? (
-                <BigLabel4
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 5 ? (
-                <BigLabel5
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 6 ? (
-                <BigLabel6
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 7 ? (
-                <BigLabel7
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 8 ? (
-                <BigLabel8
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 9 ? (
-                <BigLabel9
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 10 ? (
-                <BigLabel10
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 11 ? (
-                <BigLabel11
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 12 ? (
-                <BigLabel12
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 13 ? (
-                <BigLabel13
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 14 ? (
-                <BigLabel14
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 15 ? (
-                <BigLabel15
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 16 ? (
-                <BigLabel16
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 17 ? (
-                <BigLabel17
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 18 ? (
-                <BigLabel18
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 19 ? (
-                <BigLabel19
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 20 ? (
-                <BigLabel20
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 21 ? (
-                <BigLabel21
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 22 ? (
-                <BigLabel22
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 23 ? (
-                <BigLabel23
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 24 ? (
-                <BigLabel24
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 25 ? (
-                <BigLabel25
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 26 ? (
-                <BigLabel26
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 27 ? (
-                <BigLabel27
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 28 ? (
-                <BigLabel28
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : G.curLabel === 29 ? (
-                <BigLabel29
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              ) : (
-                <BigLabel30
-                  bottleName={G && G.bottleName}
-                  vol={G && G.vol}
-                  cl={G && G.cl}
-                  tagLine={G && G.tagLine}
-                  color={G && G.color}
-                  batchDate={G && G.batchDate}
-                  bottleType={G && G.bottleType}
-                  file={G && G.file}
-                />
-              )}
+            <div className="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-xs-12 pay-bottle-div">
+              <div className="height-380">
+                {G.curLabel === 0 ? (
+                  <SBigLabel1
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 1 ? (
+                  <BigLabel1
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 2 ? (
+                  <BigLabel2
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 3 ? (
+                  <BigLabel3
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 4 ? (
+                  <BigLabel4
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 5 ? (
+                  <BigLabel5
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 6 ? (
+                  <BigLabel6
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 7 ? (
+                  <BigLabel7
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 8 ? (
+                  <BigLabel8
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 9 ? (
+                  <BigLabel9
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 10 ? (
+                  <BigLabel10
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 11 ? (
+                  <BigLabel11
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 12 ? (
+                  <BigLabel12
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 13 ? (
+                  <BigLabel13
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 14 ? (
+                  <BigLabel14
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 15 ? (
+                  <BigLabel15
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 16 ? (
+                  <BigLabel16
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 17 ? (
+                  <BigLabel17
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 18 ? (
+                  <BigLabel18
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 19 ? (
+                  <BigLabel19
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 20 ? (
+                  <BigLabel20
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 21 ? (
+                  <BigLabel21
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 22 ? (
+                  <BigLabel22
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 23 ? (
+                  <BigLabel23
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 24 ? (
+                  <BigLabel24
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 25 ? (
+                  <BigLabel25
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 26 ? (
+                  <BigLabel26
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 27 ? (
+                  <BigLabel27
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 28 ? (
+                  <BigLabel28
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : G.curLabel === 29 ? (
+                  <BigLabel29
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                ) : (
+                  <BigLabel30
+                    bottleName={G && G.bottleName}
+                    vol={G && G.vol}
+                    cl={G && G.cl}
+                    tagLine={G && G.tagLine}
+                    color={G && G.color}
+                    batchDate={G && G.batchDate}
+                    bottleType={G && G.bottleType}
+                    file={G && G.file}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
