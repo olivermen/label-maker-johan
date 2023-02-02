@@ -15,13 +15,14 @@ import Splash from "../pages/Splash";
 import Confirmation from "../pages/Confirmation";
 import Download from "../pages/Download";
 import NotFound from "../pages/404";
+import Language from "../pages/Language";
 
 const Routers = () => {
   return (
     <Routes>
       {" "}
       <Route path="/" element={<Splash />} />
-      <Route path="/en" element={<Home />} />
+      <Route path="/en" element={<Language lang="en-US"/>} />
       <Route path="/en/edit" element={<Home />} />
       <Route path="/en/login" element={<Home />} />
       <Route path="/en/order" element={<Order />} />
@@ -34,7 +35,7 @@ const Routers = () => {
       <Route path="/en/review" element={<Review />} />
       <Route path="/en/confirmation" element={<Confirmation />} />
       <Route path="*" element={<NotFound />} />
-      <Route path="/sv" element={<Home />} />
+      <Route path="/sv" element={<Language lang="sw-SW"/>} />
       <Route path="/sv/edit" element={<Home />} />
       <Route path="/sv/login" element={<Home />} />
       <Route path="/sv/order" element={<Order />} />
@@ -46,7 +47,7 @@ const Routers = () => {
       <Route path="/sv/shippinginfo" element={<ShippingInfo />} />
       <Route path="/sv/review" element={<Review />} />
       <Route path="/sv/confirmation" element={<Confirmation />} />
-      <Route path="/es" element={<Home />} />
+      <Route path="/es" element={<Language lang="es-ES"/>} />
       <Route path="/es/edit" element={<Home />} />
       <Route path="/es/login" element={<Home />} />
       <Route path="/es/order" element={<Order />} />

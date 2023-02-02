@@ -11,6 +11,7 @@ import "./about.scss";
 import TopMenuBar from "../../components/TopMenuBar";
 
 import img1 from "../../assets/main/about-1.svg";
+
 import useStore from "../../useStore";
 
 import { Helmet } from "react-helmet";
@@ -20,13 +21,39 @@ import Modal from "react-bootstrap/Modal";
 
 const About = () => {
   const { T, update } = useStore();
+  const G: any = useStore();
   const [show, setShow] = useState(false);
   const [mHeader, setMHeader] = useState<any>("Cookie Policy");
   const [mContent, setMContent] = useState<any>(
     "By clicking “Accept All Cookies”, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts."
   );
+  const [htmlFile, setHtmlFile] = useState("Fixalabel_Privacy_Policy_en.html");
   const handleClose = () => setShow(false);
   const handleShow = (str: any) => {
+    
+    if(str === "privacy") {
+      if (G.lang === "en-US") {
+        setHtmlFile("Fixalabel_Privacy_Policy_en.html");
+      }
+      if (G.lang === "sw-SW") {
+        setHtmlFile("Fixalabel_Privacy_Policy_se.html");
+      }
+      if (G.lang === "es-ES") {
+        setHtmlFile("Fixalabel_Privacy_Policy_es.html");
+      }
+    }
+    
+    else if(str === "terms") {
+      if (G.lang === "en-US") {
+        setHtmlFile("Fixalabel_terms_conditions_en.html");
+      }
+      if (G.lang === "sw-SW") {
+        setHtmlFile("Fixalabel_terms_conditions_se.html");
+      }
+      if (G.lang === "es-ES") {
+        setHtmlFile("Fixalabel_terms_conditions_es.html");
+      }
+    }
     setShow(true);
   };
 
@@ -45,14 +72,16 @@ const About = () => {
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
+          dialogClassName="my-modal"
         >
-          <Modal.Header closeButton>
+          {/* <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
               {mHeader}
             </Modal.Title>
-          </Modal.Header>
+          </Modal.Header> */}
           <Modal.Body>
-            <p>{mContent}</p>
+            <iframe src={`https://www.fixalabel.com/html/${htmlFile}`} title="Fixalabel Privacy Policy" style={{border:"none", width: "100%", height: "100%"}}></iframe>
+
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={handleClose}>Close</Button>
@@ -85,12 +114,12 @@ const About = () => {
                       </button>
                     </div>
                     <div>
-                      <button onClick={() => handleShow("terms")}>
+                      <button onClick={() => handleShow("cookie")}>
                         {T("about.cookie")}
                       </button>
                     </div>
                     <div>
-                      <button onClick={() => handleShow("terms")}>
+                      <button onClick={() => handleShow("privacy")}>
                         {T("about.privacy")}
                       </button>
                     </div>

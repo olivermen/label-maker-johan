@@ -143,6 +143,7 @@ const ReviewBox: React.FC = () => {
       order_count: G.count,
       order_label: G.curLabel,
       order_size: G.size,
+      order_file: G.file,
     };
 
     // file=${replaceSpace(G && G.file)}&
@@ -165,8 +166,12 @@ const ReviewBox: React.FC = () => {
       }`,
     };
     try {
+      console.log("Sending Email...");
       const result = await axios.post(`${appUrl}/send-email`, data);
-    } catch (error) {}
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleDownloadPdf = async () => {
